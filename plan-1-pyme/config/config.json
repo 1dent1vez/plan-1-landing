@@ -1,0 +1,130 @@
+﻿{
+  "brand": {
+    "name": "Nombre del Proyecto",
+    "tagline": "Soluciones innovadoras para problemas complejos.",
+    "accentColor": "#6366f1",
+    "bgColor": "#111827",
+    "textColor": "#f9fafb",
+    "logoText": "NUEVO"
+  },
+  "contact": {
+    "phone": "+1 555 0123 456",
+    "whatsapp": "15550123456",
+    "email": "contacto@tudominio.com",
+    "address": "Ciudad Principal, País",
+    "hours": "Lun-Vie 9:00-18:00"
+  },
+  "social": {
+    "instagram": "https://instagram.com/tu_marca",
+    "facebook": "",
+    "tiktok": "",
+    "linkedin": "https://linkedin.com/company/tu_empresa"
+  },
+  "hero": {
+    "headline": "Transforma tu visión en resultados tangibles",
+    "subheadline": "Una propuesta de valor clara que explica qué haces, para quién lo haces y qué problema resuelves de forma única.",
+    "primaryCtaLabel": "Agenda una demostración",
+    "primaryCtaHref": "#contacto",
+    "secondaryCtaLabel": "Ver cómo funciona",
+    "secondaryCtaHref": "#proceso"
+  },
+  "sections": {
+    "services": {
+      "enabled": true,
+      "title": "Nuestras Soluciones",
+      "items": [
+        {
+          "title": "Estrategia y Consultoría",
+          "text": "Auditoría profunda y planificación estratégica para alinear tus objetivos de negocio con la ejecución."
+        },
+        {
+          "title": "Diseño y Desarrollo",
+          "text": "Creación de experiencias de usuario fluidas y sistemas robustos que escalan con tu crecimiento."
+        },
+        {
+          "title": "Optimización Continua",
+          "text": "Análisis de datos y mejoras iterativas para maximizar el rendimiento y el retorno de inversión."
+        }
+      ]
+    },
+    "proof": {
+      "enabled": true,
+      "title": "Impacto demostrado",
+      "metrics": [
+        {
+          "value": "+150%",
+          "label": "Aumento promedio en eficiencia"
+        },
+        {
+          "value": "500k+",
+          "label": "Usuarios impactados mensualmente"
+        },
+        {
+          "value": "98%",
+          "label": "Tasa de retención de clientes"
+        }
+      ]
+    },
+    "process": {
+      "enabled": true,
+      "title": "Nuestro método",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Descubrimiento",
+          "text": "Entendemos a fondo tus necesidades, desafíos actuales y definimos las metas del proyecto."
+        },
+        {
+          "step": "02",
+          "title": "Ejecución Ágil",
+          "text": "Implementamos la solución en ciclos rápidos, manteniendo la transparencia y la comunicación."
+        },
+        {
+          "step": "03",
+          "title": "Lanzamiento y Escala",
+          "text": "Desplegamos la solución final, capacitamos a tu equipo y monitoreamos los resultados."
+        }
+      ]
+    },
+    "testimonials": {
+      "enabled": true,
+      "title": "Confianza de la industria",
+      "items": [
+        {
+          "quote": "El equipo superó nuestras expectativas. La implementación fue impecable y los resultados inmediatos.",
+          "name": "Laura Gómez",
+          "role": "Directora de Operaciones, Empresa Genérica"
+        }
+      ]
+    },
+    "faq": {
+      "enabled": true,
+      "title": "Preguntas Frecuentes",
+      "items": [
+        {
+          "question": "¿Cuánto tiempo toma la implementación?",
+          "answer": "Depende del alcance, pero generalmente completamos la fase inicial en 2-4 semanas."
+        },
+        {
+          "question": "¿Se integran con nuestras herramientas actuales?",
+          "answer": "Sí, nuestro enfoque es flexible y nos adaptamos a tu stack tecnológico existente."
+        },
+        {
+          "question": "¿Qué tipo de soporte ofrecen post-lanzamiento?",
+          "answer": "Ofrecemos planes de mantenimiento continuo y soporte prioritario para asegurar el éxito a largo plazo."
+        }
+      ]
+    },
+    "cta": {
+      "enabled": true,
+      "title": "¿Listo para dar el siguiente paso?",
+      "subtitle": "Cuéntanos sobre tu proyecto y te enviaremos una propuesta inicial en 24 horas.",
+      "buttonLabel": "Iniciar conversación",
+      "buttonHref": "mailto:contacto@tudominio.com"
+    }
+  },
+  "images": {
+    "hero": "",
+    "signature": ""
+  }
+}

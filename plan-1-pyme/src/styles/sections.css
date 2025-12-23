@@ -1,0 +1,174 @@
+﻿.hero {
+  position: relative;
+  background: var(--hero-grad);
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--s-5);
+  align-items: center;
+}
+
+.hero-copy {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.signature-visual {
+  position: relative;
+  height: var(--signature-size);
+  border-radius: var(--r-3);
+  background: var(--panel-grad);
+  border: var(--border-1) solid var(--border-strong);
+  overflow: hidden;
+}
+
+.signature-orb {
+  position: absolute;
+  width: var(--signature-orb);
+  height: var(--signature-orb);
+  border-radius: 50%;
+  background: var(--signature-orb-grad);
+  top: var(--s-3);
+  right: var(--s-3);
+  filter: blur(calc(var(--s-1) * 0.5));
+}
+
+.signature-grid {
+  position: absolute;
+  inset: var(--s-3);
+  background-image: var(--signature-grid);
+  background-size: var(--s-3) var(--s-3);
+  border-radius: var(--r-2);
+}
+
+.signature-lines {
+  position: absolute;
+  inset: var(--s-3);
+  width: calc(100% - (var(--s-3) * 2));
+  height: calc(100% - (var(--s-3) * 2));
+  stroke: var(--signature-line);
+  stroke-width: var(--border-1);
+  fill: none;
+}
+
+.section-header {
+  margin-bottom: var(--s-4);
+}
+
+.metrics-grid,
+.cards-grid,
+.process-grid {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.metric-card {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.metric-label {
+  color: var(--muted);
+}
+
+.service-card p,
+.process-card p,
+.testimonial-card p {
+  color: var(--muted);
+}
+
+.step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--s-4);
+  height: var(--s-4);
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: var(--s-2);
+}
+
+.testimonial-quote {
+  font-size: var(--fs-body);
+}
+
+.testimonial-name {
+  font-weight: 600;
+  margin-top: var(--s-2);
+}
+
+.testimonial-role {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.accordion {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.cta {
+  background: var(--surface-2);
+}
+
+.cta-card {
+  padding: var(--s-5);
+  border-radius: var(--r-3);
+  display: grid;
+  gap: var(--s-3);
+  align-items: center;
+  border: var(--border-1) solid var(--border-strong);
+  background: var(--panel-grad);
+  box-shadow: var(--shadow-2);
+}
+
+.cta-card p {
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .hero-copy {
+    grid-column: 1 / span 6;
+  }
+
+  .hero-visual {
+    grid-column: 7 / span 6;
+  }
+
+  .metrics-grid,
+  .cards-grid,
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cta-card {
+    grid-template-columns: 1fr auto;
+  }
+}
+

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Landing Demo</title>
+    <meta name="description" content="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles/tokens.css" />
+    <link rel="stylesheet" href="src/styles/base.css" />
+    <link rel="stylesheet" href="src/styles/components.css" />
+    <link rel="stylesheet" href="src/styles/sections.css" />
+  </head>
+
+  <body>
+    <header class="site-header" data-reveal>
+      <div class="container header-inner">
+        <a class="brand" href="#hero">
+          <span
+            class="brand-mark"
+            aria-hidden="true"
+            data-bind="brand.logoText"
+          ></span>
+          <span class="brand-name" data-bind="brand.name"></span>
+        </a>
+
+        <nav class="nav" data-nav>
+          <a href="#services" data-nav-for="services">Servicios</a>
+          <a href="#proof" data-nav-for="proof">Resultados</a>
+          <a href="#process" data-nav-for="process">Proceso</a>
+          <a href="#faq" data-nav-for="faq">Preguntas</a>
+          <a href="#cta" data-nav-for="cta">Contacto</a>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          data-nav-toggle
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <a
+          class="btn btn-primary btn-small"
+          data-bind="hero.primaryCtaLabel"
+          data-bind-attr="href:hero.primaryCtaHref"
+        ></a>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="hero"
+        class="section hero"
+        data-section="hero"
+        data-variant="a"
+      >
+        <div class="container hero-grid">
+          <div class="hero-copy" data-stagger="0.08">
+            <p class="eyebrow" data-bind="brand.tagline" data-reveal></p>
+            <h1 data-bind="hero.headline" data-reveal></h1>
+            <p class="lead" data-bind="hero.subheadline" data-reveal></p>
+
+            <div class="hero-actions" data-reveal>
+              <a
+                class="btn btn-primary"
+                data-bind="hero.primaryCtaLabel"
+                data-bind-attr="href:hero.primaryCtaHref"
+              ></a>
+              <a
+                class="btn btn-secondary"
+                data-bind="hero.secondaryCtaLabel"
+                data-bind-attr="href:hero.secondaryCtaHref"
+              ></a>
+            </div>
+
+            <div class="hero-meta" data-reveal>
+              <span class="meta-item" data-bind="contact.hours"></span>
+              <span class="meta-item" data-bind="contact.address"></span>
+            </div>
+          </div>
+
+          <div
+            class="hero-visual signature-visual"
+            aria-hidden="true"
+            data-reveal
+          >
+            <div class="signature-orb" data-parallax="0.06"></div>
+            <div class="signature-grid"></div>
+
+            <svg
+              class="signature-lines"
+              viewBox="0 0 320 320"
+              role="presentation"
+              aria-hidden="true"
+            >
+              <path d="M16 80 C 80 40, 160 40, 240 80" />
+              <path d="M32 160 C 120 120, 200 140, 304 190" />
+              <path d="M16 248 C 100 220, 180 230, 300 280" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="proof" class="section" data-section="proof" data-variant="a">
+        <div class="container section-header" data-reveal>
+          <h2 data-bind="sections.proof.title"></h2>
+        </div>
+
+        <div
+          class="container metrics-grid"
+          data-repeat="sections.proof.metrics"
+        >
+          <article class="card metric-card" data-repeat-item data-reveal>
+            <p class="metric-value" data-bind="value"></p>
+            <p class="metric-label" data-bind="label"></p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        class="section section-alt"
+        data-section="services"
+        data-variant="a"
+      >
+        <div class="container section-header" data-reveal>
+          <h2 data-bind="sections.services.title"></h2>
+        </div>
+
+        <div class="container cards-grid" data-repeat="sections.services.items">
+          <article class="card service-card" data-repeat-item data-reveal>
+            <h3 data-bind="title"></h3>
+            <p data-bind="text"></p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="process"
+        class="section"
+        data-section="process"
+        data-variant="a"
+      >
+        <div class="container section-header" data-reveal>
+          <h2 data-bind="sections.process.title"></h2>
+        </div>
+
+        <div
+          class="container process-grid"
+          data-repeat="sections.process.steps"
+        >
+          <article class="card process-card" data-repeat-item data-reveal>
+            <span class="step-index" data-bind="step"></span>
+            <h3 data-bind="title"></h3>
+            <p data-bind="text"></p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="testimonials"
+        class="section section-alt"
+        data-section="testimonials"
+        data-variant="a"
+      >
+        <div class="container section-header" data-reveal>
+          <h2 data-bind="sections.testimonials.title"></h2>
+        </div>
+
+        <div
+          class="container cards-grid"
+          data-repeat="sections.testimonials.items"
+        >
+          <article class="card testimonial-card" data-repeat-item data-reveal>
+            <p class="testimonial-quote" data-bind="quote"></p>
+            <p class="testimonial-name" data-bind="name"></p>
+            <p class="testimonial-role" data-bind="role"></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="section" data-section="faq" data-variant="a">
+        <div class="container section-header" data-reveal>
+          <h2 data-bind="sections.faq.title"></h2>
+        </div>
+
+        <div
+          class="container accordion"
+          data-accordion
+          data-repeat="sections.faq.items"
+        >
+          <div class="accordion-item" data-repeat-item>
+            <button
+              class="accordion-trigger"
+              type="button"
+              aria-expanded="false"
+              data-bind="question"
+            ></button>
+
+            <div class="accordion-panel" hidden>
+              <p data-bind="answer"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="section cta" data-section="cta" data-variant="a">
+        <div class="container cta-card" data-reveal>
+          <div class="cta-copy">
+            <h2 data-bind="sections.cta.title"></h2>
+            <p data-bind="sections.cta.subtitle"></p>
+          </div>
+
+          <a
+            class="btn btn-primary"
+            data-bind="sections.cta.buttonLabel"
+            data-bind-attr="href:sections.cta.buttonHref"
+          ></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="section footer" data-section="footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="footer-title" data-bind="brand.name"></p>
+          <p class="footer-tagline" data-bind="brand.tagline"></p>
+        </div>
+
+        <div>
+          <p class="footer-label">Contacto</p>
+          <a
+            class="footer-link"
+            data-bind="contact.email"
+            data-bind-attr="href:contact.email"
+          ></a>
+          <a
+            class="footer-link"
+            data-bind="contact.phone"
+            data-bind-attr="href:contact.phone"
+          ></a>
+          <a
+            class="footer-link"
+            data-bind="contact.whatsapp"
+            data-bind-attr="href:contact.whatsapp"
+          ></a>
+        </div>
+
+        <div>
+          <p class="footer-label">Social</p>
+          <a
+            class="footer-link"
+            data-bind-attr="href:social.instagram"
+            data-optional
+          >Instagram</a>
+          <a
+            class="footer-link"
+            data-bind-attr="href:social.linkedin"
+            data-optional
+          >LinkedIn</a>
+          <a
+            class="footer-link"
+            data-bind-attr="href:social.tiktok"
+            data-optional
+          >TikTok</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="src/js/main.js"></script>
+  </body>
+</html>
