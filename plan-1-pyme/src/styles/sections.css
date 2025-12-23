@@ -20,6 +20,10 @@
   gap: var(--s-2);
 }
 
+.hero-actions .btn {
+  width: auto;
+}
+
 .hero-meta {
   display: flex;
   flex-direction: column;
@@ -169,6 +173,106 @@
 
   .cta-card {
     grid-template-columns: 1fr auto;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  .eyebrow,
+  .footer-label,
+  .nav a {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 560px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .hero-grid,
+  .metrics-grid,
+  .cards-grid,
+  .process-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .hero-actions .btn,
+  .cta-card .btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 16px;
+  }
+
+  .btn {
+    min-height: 48px;
+    padding: 14px 16px;
+  }
+
+  .card,
+  .cta-card,
+  .accordion-item {
+    padding: 16px;
+    box-shadow: none;
+  }
+
+  .metric-card,
+  .cards-grid .card,
+  .process-grid .card {
+    text-align: left;
+  }
+
+  .hero-meta {
+    gap: 8px;
+  }
+
+  .signature-visual {
+    height: 260px;
+  }
+
+  .signature-orb {
+    width: 180px;
+    height: 180px;
+  }
+
+  .signature-grid,
+  .signature-lines {
+    inset: 16px;
+  }
+
+  .nav {
+    padding: 16px var(--container-pad);
+  }
+
+  .nav a {
+    padding: 8px 0;
   }
 }
 
