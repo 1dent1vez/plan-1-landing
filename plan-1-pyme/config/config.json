@@ -1,99 +1,99 @@
 ﻿{
   "brand": {
-    "name": "Nombre del Proyecto",
-    "tagline": "Soluciones innovadoras para problemas complejos.",
+    "name": "Tu Marca",
+    "tagline": "Tu eslogan o frase principal aquí",
     "accentColor": "#6366f1",
     "bgColor": "#111827",
     "textColor": "#f9fafb",
-    "logoText": "NUEVO"
+    "logoText": "LOGO"
   },
   "contact": {
-    "phone": "+1 555 0123 456",
-    "whatsapp": "15550123456",
-    "email": "contacto@tudominio.com",
-    "address": "Ciudad Principal, País",
-    "hours": "Lun-Vie 9:00-18:00"
+    "phone": "+52 55 1234 5678",
+    "whatsapp": "5215512345678",
+    "email": "hola@tudominio.com",
+    "address": "Ciudad, País",
+    "hours": "Lun-Vie 9:00 - 18:00"
   },
   "social": {
-    "instagram": "https://instagram.com/tu_marca",
-    "facebook": "",
+    "instagram": "https://instagram.com/tu_usuario",
+    "facebook": "https://facebook.com/tu_usuario",
     "tiktok": "",
     "linkedin": "https://linkedin.com/company/tu_empresa"
   },
   "hero": {
-    "headline": "Transforma tu visión en resultados tangibles",
-    "subheadline": "Una propuesta de valor clara que explica qué haces, para quién lo haces y qué problema resuelves de forma única.",
-    "primaryCtaLabel": "Agenda una demostración",
+    "headline": "Escribe aquí tu Gran Promesa de Valor",
+    "subheadline": "Aquí va una descripción breve de 2 líneas sobre lo que haces, para quién lo haces y qué problema resuelves.",
+    "primaryCtaLabel": "Botón Principal",
     "primaryCtaHref": "#contacto",
-    "secondaryCtaLabel": "Ver cómo funciona",
+    "secondaryCtaLabel": "Botón Secundario",
     "secondaryCtaHref": "#proceso"
   },
   "sections": {
     "services": {
       "enabled": true,
-      "title": "Nuestras Soluciones",
+      "title": "Nuestros Servicios",
       "items": [
         {
-          "title": "Estrategia y Consultoría",
-          "text": "Auditoría profunda y planificación estratégica para alinear tus objetivos de negocio con la ejecución."
+          "title": "Servicio Principal 1",
+          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
         },
         {
-          "title": "Diseño y Desarrollo",
-          "text": "Creación de experiencias de usuario fluidas y sistemas robustos que escalan con tu crecimiento."
+          "title": "Servicio Principal 2",
+          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
         },
         {
-          "title": "Optimización Continua",
-          "text": "Análisis de datos y mejoras iterativas para maximizar el rendimiento y el retorno de inversión."
+          "title": "Servicio Principal 3",
+          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
         }
       ]
     },
     "proof": {
       "enabled": true,
-      "title": "Impacto demostrado",
+      "title": "Resultados en Cifras",
       "metrics": [
         {
-          "value": "+150%",
-          "label": "Aumento promedio en eficiencia"
+          "value": "100%",
+          "label": "Etiqueta de la métrica 1"
         },
         {
-          "value": "500k+",
-          "label": "Usuarios impactados mensualmente"
+          "value": "+500",
+          "label": "Etiqueta de la métrica 2"
         },
         {
-          "value": "98%",
-          "label": "Tasa de retención de clientes"
+          "value": "24h",
+          "label": "Etiqueta de la métrica 3"
         }
       ]
     },
     "process": {
       "enabled": true,
-      "title": "Nuestro método",
+      "title": "Cómo Funciona",
       "steps": [
         {
           "step": "01",
-          "title": "Descubrimiento",
-          "text": "Entendemos a fondo tus necesidades, desafíos actuales y definimos las metas del proyecto."
+          "title": "Paso Uno",
+          "text": "Explica brevemente qué sucede en la primera fase de tu proceso de trabajo."
         },
         {
           "step": "02",
-          "title": "Ejecución Ágil",
-          "text": "Implementamos la solución en ciclos rápidos, manteniendo la transparencia y la comunicación."
+          "title": "Paso Dos",
+          "text": "Explica brevemente qué sucede durante el desarrollo o la ejecución."
         },
         {
           "step": "03",
-          "title": "Lanzamiento y Escala",
-          "text": "Desplegamos la solución final, capacitamos a tu equipo y monitoreamos los resultados."
+          "title": "Paso Tres",
+          "text": "Explica brevemente el resultado final o la entrega al cliente."
         }
       ]
     },
     "testimonials": {
       "enabled": true,
-      "title": "Confianza de la industria",
+      "title": "Lo que dicen los clientes",
       "items": [
         {
-          "quote": "El equipo superó nuestras expectativas. La implementación fue impecable y los resultados inmediatos.",
-          "name": "Laura Gómez",
-          "role": "Directora de Operaciones, Empresa Genérica"
+          "quote": "Aquí va una cita textual de un cliente satisfecho hablando de los resultados obtenidos.",
+          "name": "Nombre del Cliente",
+          "role": "Cargo / Empresa"
         }
       ]
     },
@@ -102,25 +102,25 @@
       "title": "Preguntas Frecuentes",
       "items": [
         {
-          "question": "¿Cuánto tiempo toma la implementación?",
-          "answer": "Depende del alcance, pero generalmente completamos la fase inicial en 2-4 semanas."
+          "question": "¿Pregunta frecuente número 1?",
+          "answer": "Respuesta clara y directa para resolver la duda del usuario."
         },
         {
-          "question": "¿Se integran con nuestras herramientas actuales?",
-          "answer": "Sí, nuestro enfoque es flexible y nos adaptamos a tu stack tecnológico existente."
+          "question": "¿Pregunta frecuente número 2?",
+          "answer": "Respuesta clara y directa para resolver la duda del usuario."
         },
         {
-          "question": "¿Qué tipo de soporte ofrecen post-lanzamiento?",
-          "answer": "Ofrecemos planes de mantenimiento continuo y soporte prioritario para asegurar el éxito a largo plazo."
+          "question": "¿Pregunta frecuente número 3?",
+          "answer": "Respuesta clara y directa para resolver la duda del usuario."
         }
       ]
     },
     "cta": {
       "enabled": true,
-      "title": "¿Listo para dar el siguiente paso?",
-      "subtitle": "Cuéntanos sobre tu proyecto y te enviaremos una propuesta inicial en 24 horas.",
-      "buttonLabel": "Iniciar conversación",
-      "buttonHref": "mailto:contacto@tudominio.com"
+      "title": "¿Listo para empezar?",
+      "subtitle": "Un último empujón persuasivo para que el usuario te contacte ahora mismo.",
+      "buttonLabel": "Contactar Ahora",
+      "buttonHref": "mailto:hola@tudominio.com"
     }
   },
   "images": {

@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -60,7 +64,6 @@ h3 {
 
 main {
   position: relative;
-  overflow: hidden;
 }
 
 .section {
@@ -74,6 +77,7 @@ main {
 .container {
   width: min(var(--container), 100% - (var(--container-pad) * 2));
   margin: 0 auto;
+  max-width: 560px;
 }
 
 .grid {
@@ -93,9 +97,15 @@ main {
   color: var(--muted);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: none;
   }
 }
 

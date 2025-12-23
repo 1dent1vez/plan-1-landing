@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Landing Demo</title>
-    <meta name="description" content="" />
+    <title>Landing Profesional</title>
+    <meta
+      name="description"
+      content="Landing profesional optimizada para conversión, con navegación accesible y enfoque mobile-first."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +21,7 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
     <header class="site-header" data-reveal>
       <div class="container header-inner">
         <a class="brand" href="#hero">
@@ -29,7 +33,7 @@
           <span class="brand-name" data-bind="brand.name"></span>
         </a>
 
-        <nav class="nav" data-nav>
+        <nav class="nav" id="site-nav" data-nav aria-label="Principal">
           <a href="#services" data-nav-for="services">Servicios</a>
           <a href="#proof" data-nav-for="proof">Resultados</a>
           <a href="#process" data-nav-for="process">Proceso</a>
@@ -41,7 +45,8 @@
           class="nav-toggle"
           type="button"
           data-nav-toggle
-          aria-label="Toggle menu"
+          aria-label="Abrir menu"
+          aria-controls="site-nav"
           aria-expanded="false"
         >
           <span></span>
@@ -56,7 +61,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <section
         id="hero"
         class="section hero"
@@ -206,7 +211,7 @@
               data-bind="question"
             ></button>
 
-            <div class="accordion-panel" hidden>
+            <div class="accordion-panel">
               <p data-bind="answer"></p>
             </div>
           </div>

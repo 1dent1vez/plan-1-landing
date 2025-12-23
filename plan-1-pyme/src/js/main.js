@@ -2,6 +2,8 @@
 import { initMotion } from "./motion.js";
 import { initComponents } from "./components.js";
 
+
+document.documentElement.classList.add("js");
 async function init() {
   await initConfig();
   initComponents();
@@ -9,3 +11,5 @@ async function init() {
 }
 
 init();
+
+

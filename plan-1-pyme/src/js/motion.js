@@ -4,7 +4,9 @@
 
 function setupReveal() {
   const elements = document.querySelectorAll("[data-reveal]");
-  if (prefersReducedMotion()) {
+  if (!elements.length) return;
+
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
     elements.forEach((el) => el.classList.add("is-visible"));
     return;
   }
