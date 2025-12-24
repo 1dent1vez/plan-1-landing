@@ -1,17 +1,26 @@
 ﻿:root {
-  --font-sans: "Inter", sans-serif;
-  --bg: #0b0d12;
+  --color-primary: #6366f1;
+  --color-accent: #ff5d3b;
+  --color-bg: #111827;
+  --color-text: #f9fafb;
+  --color-border: rgba(248, 250, 252, 0.14);
+  --color-border-strong: rgba(248, 250, 252, 0.22);
+  --font-base: "Inter", sans-serif;
+  --font-sans: var(--font-base);
+  --bg: var(--color-bg);
   --surface: #12151d;
   --surface-2: #161a26;
-  --text: #f8fafc;
+  --text: var(--color-text);
   --muted: #b3bccb;
   --ink: #0b0d12;
-  --accent: #ff5d3b;
-  --accent-2: #ffd166;
-  --border: rgba(248, 250, 252, 0.14);
-  --border-strong: rgba(248, 250, 252, 0.22);
+  --accent: var(--color-primary);
+  --accent-2: var(--color-accent);
+  --border: var(--color-border);
+  --border-strong: var(--color-border-strong);
   --nav-bg: rgba(11, 13, 18, 0.75);
   --footer-bg: #080a0f;
+  --button-primary-text: #0b0d12;
+  --button-secondary-text: #f9fafb;
   --shadow-1: 0 16px 40px rgba(5, 8, 15, 0.4);
   --shadow-2: 0 24px 60px rgba(5, 8, 15, 0.55);
   --shadow-3: 0 36px 90px rgba(5, 8, 15, 0.7);
@@ -53,12 +62,9 @@
   --dur-none: 1ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --reveal-distance: 16px;
-  --signature-size: 360px;
-  --signature-orb: 224px;
   --lift-1: calc(var(--s-1) * 0.25);
   --hero-grad: radial-gradient(circle at 20% 20%, rgba(255, 93, 59, 0.24), transparent 55%);
   --panel-grad: linear-gradient(140deg, rgba(248, 250, 252, 0.12), rgba(248, 250, 252, 0));
-  --signature-orb-grad: radial-gradient(circle at 30% 30%, rgba(255, 209, 102, 0.65), rgba(255, 93, 59, 0.2), transparent 70%);
-  --signature-grid: linear-gradient(rgba(248, 250, 252, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(248, 250, 252, 0.08) 1px, transparent 1px);
-  --signature-line: rgba(248, 250, 252, 0.4);
+  --focus-ring: rgba(99, 102, 241, 0.45);
+  --hover-lift: rgba(248, 250, 252, 0.08);
 }

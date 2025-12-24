@@ -8,11 +8,11 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-base);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
-  background: var(--bg);
-  color: var(--text);
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 a {
@@ -28,7 +28,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: var(--border-1) solid var(--accent);
+  outline: var(--border-1) solid var(--focus-ring);
   outline-offset: var(--s-1);
 }
 
@@ -119,3 +119,4 @@ main {
     scroll-behavior: auto !important;
   }
 }
+

@@ -5,106 +5,112 @@ function getValue(source, path) {
   return path.split(".").reduce((acc, key) => (acc ? acc[key] : undefined), source);
 }
 
-function toLink(value, type) {
-  if (!value) return "";
-  if (typeof value !== "string") return String(value);
-  const trimmed = value.trim();
-  if (!trimmed) return "";
-  if (type === "email") {
-    return trimmed.startsWith("mailto:") ? trimmed : `mailto:${trimmed}`;
-  }
-  if (type === "phone") {
-    return trimmed.startsWith("tel:") ? trimmed : `tel:${trimmed}`;
-  }
-  if (type === "whatsapp") {
-    if (trimmed.startsWith("http")) return trimmed;
-    const digits = trimmed.replace(/\D/g, "");
-    return digits ? `https://wa.me/${digits}` : "";
-  }
-  return trimmed;
+function setVar(name, value) {
+  if (value === undefined || value === null || value === "") return;
+  document.documentElement.style.setProperty(name, String(value));
 }
 
-function applyTheme(config) {
-  const root = document.documentElement;
-  if (!config || !config.brand) return;
-  if (config.brand.accentColor) root.style.setProperty("--accent", config.brand.accentColor);
-  if (config.brand.bgColor) root.style.setProperty("--bg", config.brand.bgColor);
-  if (config.brand.textColor) root.style.setProperty("--text", config.brand.textColor);
+function applyTheme(theme) {
+  if (!theme) return;
+  const palette = theme.palette || {};
+  const brand = palette.brand || {};
+  const neutral = palette.neutral || {};
+  const borders = theme.borders || {};
+  const components = theme.components || {};
+  const effects = theme.effects || {};
+  const shadows = theme.shadows || {};
+  const gradients = theme.gradients || {};
+  const states = theme.states || {};
+  const fonts = theme.fonts || {};
+
+  setVar("--color-primary", brand.primary);
+  setVar("--color-accent", brand.secondary);
+  setVar("--color-bg", neutral.bg);
+  setVar("--color-text", neutral.text);
+  setVar("--color-border", borders.default);
+  setVar("--color-border-strong", borders.strong);
+  setVar("--surface", neutral.surface1);
+  setVar("--surface-2", neutral.surface2);
+  setVar("--muted", neutral.muted);
+  setVar("--ink", neutral.ink);
+  setVar("--nav-bg", components.navBg);
+  setVar("--footer-bg", components.footerBg);
+  setVar("--button-primary-text", components.buttonPrimaryText);
+  setVar("--button-secondary-text", components.buttonSecondaryText);
+  setVar("--hero-grad", gradients.hero);
+  setVar("--panel-grad", gradients.panel);
+  setVar("--shadow-1", shadows.shadow1);
+  setVar("--shadow-2", shadows.shadow2);
+  setVar("--shadow-3", shadows.shadow3);
+  setVar("--focus-ring", states.focusRing);
+  setVar("--hover-lift", states.hoverLift);
+  setVar("--font-base", fonts.base);
 }
 
-function bindText(root, config, scope) {
+function bindText(root, content, scope) {
   root.querySelectorAll("[data-bind]").forEach((el) => {
     const key = el.getAttribute("data-bind");
     const localValue = scope ? getValue(scope, key) : undefined;
-    const value = localValue !== undefined ? localValue : getValue(config, key);
-    if (value === undefined || value === null || value === "") {
-      if (el.hasAttribute("data-optional")) el.remove();
-      return;
-    }
+    const value = localValue !== undefined ? localValue : getValue(content, key);
+    if (value === undefined || value === null) return;
     el.textContent = String(value);
   });
 }
 
-function bindAttributes(root, config, scope) {
+function bindAttributes(root, content, scope) {
   root.querySelectorAll("[data-bind-attr]").forEach((el) => {
     const raw = el.getAttribute("data-bind-attr");
     if (!raw) return;
-    raw.split(",").forEach((pair) => {
+    raw.split(";").forEach((pair) => {
       const parts = pair.split(":");
       if (parts.length !== 2) return;
       const attr = parts[0].trim();
       const path = parts[1].trim();
       const localValue = scope ? getValue(scope, path) : undefined;
-      const value = localValue !== undefined ? localValue : getValue(config, path);
-      if (!value) {
-        if (el.hasAttribute("data-optional")) el.remove();
-        return;
-      }
-      let resolved = String(value);
-      if (path.includes("email")) resolved = toLink(value, "email");
-      if (path.includes("phone")) resolved = toLink(value, "phone");
-      if (path.includes("whatsapp")) resolved = toLink(value, "whatsapp");
-      el.setAttribute(attr, resolved);
+      const value = localValue !== undefined ? localValue : getValue(content, path);
+      if (value === undefined || value === null) return;
+      el.setAttribute(attr, String(value));
     });
   });
 }
 
-function renderRepeats(config) {
+function renderRepeats(content) {
   document.querySelectorAll("[data-repeat]").forEach((list) => {
     const path = list.getAttribute("data-repeat");
-    const items = getValue(config, path);
+    const items = getValue(content, path);
     if (!Array.isArray(items)) return;
     const template = list.querySelector("[data-repeat-item]");
     if (!template) return;
-    list.innerHTML = "";
+    const parent = template.parentElement || list;
+    parent.removeChild(template);
     items.forEach((item, index) => {
       const clone = template.cloneNode(true);
       clone.removeAttribute("data-repeat-item");
       const scope = typeof item === "object" && item !== null ? { ...item, index } : { value: item, index };
-      bindText(clone, config, scope);
-      bindAttributes(clone, config, scope);
-      list.appendChild(clone);
+      bindText(clone, content, scope);
+      bindAttributes(clone, content, scope);
+      parent.appendChild(clone);
     });
   });
 }
 
-function toggleSections(config) {
-  const sections = config.sections || {};
+function toggleSections(content) {
+  const sections = (content && content.sections) || {};
   document.querySelectorAll("[data-section]").forEach((section) => {
     const key = section.getAttribute("data-section");
     if (!sections[key]) return;
     if (sections[key].enabled === false) section.remove();
   });
-  document.querySelectorAll("[data-nav-for]").forEach((link) => {
-    const key = link.getAttribute("data-nav-for");
-    if (!sections[key]) return;
-    if (sections[key].enabled === false) link.remove();
-  });
 }
 
-function updateTitle(config) {
-  if (!config.brand || !config.hero) return;
-  document.title = `${config.brand.name} | ${config.hero.headline}`;
+function updateTitle(content) {
+  if (!content) return;
+  if (content.meta && content.meta.title) {
+    document.title = content.meta.title;
+    return;
+  }
+  if (!content.brand || !content.hero) return;
+  document.title = `${content.brand.name} | ${content.hero.headline}`;
 }
 
 export async function initConfig() {
@@ -117,11 +123,12 @@ export async function initConfig() {
     return null;
   }
 
-  applyTheme(config);
-  updateTitle(config);
-  bindText(document, config);
-  bindAttributes(document, config);
-  renderRepeats(config);
-  toggleSections(config);
+  const content = config.content || {};
+  applyTheme(config.theme);
+  updateTitle(content);
+  bindText(document, content);
+  bindAttributes(document, content);
+  renderRepeats(content);
+  toggleSections(content);
   return config;
 }

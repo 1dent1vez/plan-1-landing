@@ -35,35 +35,7 @@ function setupStagger() {
   });
 }
 
-function setupParallax() {
-  if (prefersReducedMotion()) return;
-  const elements = Array.from(document.querySelectorAll("[data-parallax]"));
-  if (!elements.length) return;
-
-  let ticking = false;
-
-  const update = () => {
-    const scrollY = window.scrollY;
-    elements.forEach((el) => {
-      const factor = parseFloat(el.getAttribute("data-parallax")) || 0.05;
-      const offset = scrollY * factor * -1;
-      el.style.transform = `translateY(${offset}px)`;
-    });
-    ticking = false;
-  };
-
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  };
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  update();
-}
-
 export function initMotion() {
   setupStagger();
   setupReveal();
-  setupParallax();
 }

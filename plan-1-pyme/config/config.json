@@ -1,130 +1,188 @@
 ﻿{
-  "brand": {
-    "name": "Tu Marca",
-    "tagline": "Tu eslogan o frase principal aquí",
-    "accentColor": "#6366f1",
-    "bgColor": "#111827",
-    "textColor": "#f9fafb",
-    "logoText": "LOGO"
-  },
-  "contact": {
-    "phone": "+52 55 1234 5678",
-    "whatsapp": "5215512345678",
-    "email": "hola@tudominio.com",
-    "address": "Ciudad, País",
-    "hours": "Lun-Vie 9:00 - 18:00"
-  },
-  "social": {
-    "instagram": "https://instagram.com/tu_usuario",
-    "facebook": "https://facebook.com/tu_usuario",
-    "tiktok": "",
-    "linkedin": "https://linkedin.com/company/tu_empresa"
-  },
-  "hero": {
-    "headline": "Escribe aquí tu Gran Promesa de Valor",
-    "subheadline": "Aquí va una descripción breve de 2 líneas sobre lo que haces, para quién lo haces y qué problema resuelves.",
-    "primaryCtaLabel": "Botón Principal",
-    "primaryCtaHref": "#contacto",
-    "secondaryCtaLabel": "Botón Secundario",
-    "secondaryCtaHref": "#proceso"
-  },
-  "sections": {
-    "services": {
-      "enabled": true,
-      "title": "Nuestros Servicios",
-      "items": [
-        {
-          "title": "Servicio Principal 1",
-          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
-        },
-        {
-          "title": "Servicio Principal 2",
-          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
-        },
-        {
-          "title": "Servicio Principal 3",
-          "text": "Descripción corta del servicio. Explica el beneficio principal que obtiene el cliente aquí."
-        }
-      ]
+  "theme": {
+    "fonts": {
+      "base": "Inter, sans-serif"
     },
-    "proof": {
-      "enabled": true,
-      "title": "Resultados en Cifras",
-      "metrics": [
-        {
-          "value": "100%",
-          "label": "Etiqueta de la métrica 1"
-        },
-        {
-          "value": "+500",
-          "label": "Etiqueta de la métrica 2"
-        },
-        {
-          "value": "24h",
-          "label": "Etiqueta de la métrica 3"
-        }
-      ]
+    "palette": {
+      "brand": {
+        "primary": "#ffffff",
+        "secondary": "#000000"
+      },
+      "neutral": {
+        "bg": "#000000",
+        "surface1": "#1a1a1a",
+        "surface2": "#262626",
+        "text": "#ffffff",
+        "muted": "#e5e5e5",
+        "ink": "#000000"
+      }
     },
-    "process": {
-      "enabled": true,
-      "title": "Cómo Funciona",
-      "steps": [
-        {
-          "step": "01",
-          "title": "Paso Uno",
-          "text": "Explica brevemente qué sucede en la primera fase de tu proceso de trabajo."
-        },
-        {
-          "step": "02",
-          "title": "Paso Dos",
-          "text": "Explica brevemente qué sucede durante el desarrollo o la ejecución."
-        },
-        {
-          "step": "03",
-          "title": "Paso Tres",
-          "text": "Explica brevemente el resultado final o la entrega al cliente."
-        }
-      ]
+    "borders": {
+      "default": "rgba(255, 255, 255, 0.3)",
+      "strong": "rgba(255, 255, 255, 0.6)"
     },
-    "testimonials": {
-      "enabled": true,
-      "title": "Lo que dicen los clientes",
-      "items": [
-        {
-          "quote": "Aquí va una cita textual de un cliente satisfecho hablando de los resultados obtenidos.",
-          "name": "Nombre del Cliente",
-          "role": "Cargo / Empresa"
-        }
-      ]
+    "components": {
+      "navBg": "rgba(0, 0, 0, 0.95)",
+      "footerBg": "#0a0a0a",
+      "buttonPrimaryText": "#000000",
+      "buttonSecondaryText": "#ffffff"
     },
-    "faq": {
-      "enabled": true,
-      "title": "Preguntas Frecuentes",
-      "items": [
-        {
-          "question": "¿Pregunta frecuente número 1?",
-          "answer": "Respuesta clara y directa para resolver la duda del usuario."
-        },
-        {
-          "question": "¿Pregunta frecuente número 2?",
-          "answer": "Respuesta clara y directa para resolver la duda del usuario."
-        },
-        {
-          "question": "¿Pregunta frecuente número 3?",
-          "answer": "Respuesta clara y directa para resolver la duda del usuario."
-        }
-      ]
+    "effects": {
+      "overlay": "rgba(0, 0, 0, 0.7)"
     },
-    "cta": {
-      "enabled": true,
-      "title": "¿Listo para empezar?",
-      "subtitle": "Un último empujón persuasivo para que el usuario te contacte ahora mismo.",
-      "buttonLabel": "Contactar Ahora",
-      "buttonHref": "mailto:hola@tudominio.com"
+    "shadows": {
+      "shadow1": "0 4px 20px rgba(255, 255, 255, 0.05)",
+      "shadow2": "0 10px 40px rgba(0, 0, 0, 1)",
+      "shadow3": "0 20px 80px rgba(0, 0, 0, 1)"
+    },
+    "gradients": {
+      "hero": "radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 60%)",
+      "panel": "linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%)"
+    },
+    "states": {
+      "focusRing": "#ffffff",
+      "hoverLift": "rgba(255, 255, 255, 0.1)"
     }
   },
-  "images": {
-    "hero": "",
-    "signature": ""
+  "content": {
+    "meta": {
+      "title": "Titulo de la pagina | Tu marca",
+      "description": "Descripcion corta para SEO que aparecera en Google."
+    },
+    "brand": {
+      "name": "NOMBRE PROYECTO",
+      "tagline": "Tu eslogan o frase corta aqui.",
+      "logoText": "LOGO"
+    },
+    "navigation": {
+      "items": [
+        { "label": "Servicios", "href": "#services" },
+        { "label": "Resultados", "href": "#proof" },
+        { "label": "Proceso", "href": "#process" },
+        { "label": "Preguntas", "href": "#faq" },
+        { "label": "Contacto", "href": "#cta" }
+      ]
+    },
+    "hero": {
+      "headline": "Escribe aqui tu gran promesa de valor",
+      "subheadline": "Aqui va una descripcion breve sobre lo que haces, para quien lo haces y que problema resuelves.",
+      "primaryCtaLabel": "Boton principal",
+      "primaryCtaHref": "#cta",
+      "secondaryCtaLabel": "Boton secundario",
+      "secondaryCtaHref": "#process",
+      "media": {
+        "type": "image",
+        "src": "assets/logo-sin-fondo2.png",
+        "alt": "Equipo colaborando en un espacio de trabajo",
+        "width": 1200,
+        "height": 800,
+        "loading": "eager",
+        "decoding": "async",
+        "fetchpriority": "high"
+      }
+    },
+    "contact": {
+      "hours": "Lun-Vie 9:00 - 18:00",
+      "address": "Ciudad, Pais"
+    },
+    "sections": {
+      "services": {
+        "enabled": true,
+        "title": "Nuestros servicios",
+        "items": [
+          {
+            "title": "Servicio principal 1",
+            "text": "Descripcion corta del servicio con el beneficio principal para el cliente."
+          },
+          {
+            "title": "Servicio principal 2",
+            "text": "Descripcion corta del servicio con el beneficio principal para el cliente."
+          },
+          {
+            "title": "Servicio principal 3",
+            "text": "Descripcion corta del servicio con el beneficio principal para el cliente."
+          }
+        ]
+      },
+      "proof": {
+        "enabled": true,
+        "title": "Resultados en cifras",
+        "metrics": [
+          { "value": "100%", "label": "Etiqueta de metrica 1" },
+          { "value": "+500", "label": "Etiqueta de metrica 2" },
+          { "value": "24h", "label": "Etiqueta de metrica 3" }
+        ]
+      },
+      "process": {
+        "enabled": true,
+        "title": "Como funciona",
+        "steps": [
+          {
+            "step": "01",
+            "title": "Fase uno",
+            "text": "Explica brevemente que sucede en la primera fase del proceso."
+          },
+          {
+            "step": "02",
+            "title": "Fase dos",
+            "text": "Explica brevemente que sucede durante la ejecucion."
+          },
+          {
+            "step": "03",
+            "title": "Fase tres",
+            "text": "Explica brevemente el resultado final o la entrega al cliente."
+          }
+        ]
+      },
+      "testimonials": {
+        "enabled": true,
+        "title": "Lo que dicen los clientes",
+        "items": [
+          {
+            "quote": "Espacio para una cita textual corta de un cliente satisfecho.",
+            "name": "Nombre del cliente",
+            "role": "Cargo / Empresa"
+          }
+        ]
+      },
+      "faq": {
+        "enabled": true,
+        "title": "Preguntas frecuentes",
+        "items": [
+          {
+            "question": "Pregunta frecuente numero 1?",
+            "answer": "Respuesta clara y directa para resolver la duda del usuario."
+          },
+          {
+            "question": "Pregunta frecuente numero 2?",
+            "answer": "Respuesta clara y directa para resolver la duda del usuario."
+          },
+          {
+            "question": "Pregunta frecuente numero 3?",
+            "answer": "Respuesta clara y directa para resolver la duda del usuario."
+          }
+        ]
+      },
+      "cta": {
+        "enabled": true,
+        "title": "Listo para empezar?",
+        "subtitle": "Un ultimo empujon persuasivo para que el usuario te contacte ahora mismo.",
+        "buttonLabel": "Contactar ahora",
+        "buttonHref": "mailto:hola@tudominio.com"
+      }
+    },
+    "footer": {
+      "contactLabel": "Contacto",
+      "socialLabel": "Social",
+      "contactLinks": [
+        { "label": "hola@tudominio.com", "href": "mailto:hola@tudominio.com" },
+        { "label": "+1 555 123 4567", "href": "tel:+15551234567" },
+        { "label": "WhatsApp", "href": "https://wa.me/15551234567" }
+      ],
+      "socialLinks": [
+        { "label": "Instagram", "href": "https://instagram.com/tu_usuario" },
+        { "label": "LinkedIn", "href": "https://linkedin.com/company/tu_empresa" }
+      ]
+    }
   }
 }

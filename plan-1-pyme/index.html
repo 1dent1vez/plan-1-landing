@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Landing Profesional</title>
-    <meta
-      name="description"
-      content="Landing profesional optimizada para conversión, con navegación accesible y enfoque mobile-first."
-    />
+    <title data-bind="meta.title">Landing</title>
+    <meta name="description" data-bind-attr="content:meta.description" content="" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,12 +30,14 @@
           <span class="brand-name" data-bind="brand.name"></span>
         </a>
 
-        <nav class="nav" id="site-nav" data-nav aria-label="Principal">
-          <a href="#services" data-nav-for="services">Servicios</a>
-          <a href="#proof" data-nav-for="proof">Resultados</a>
-          <a href="#process" data-nav-for="process">Proceso</a>
-          <a href="#faq" data-nav-for="faq">Preguntas</a>
-          <a href="#cta" data-nav-for="cta">Contacto</a>
+        <nav
+          class="nav"
+          id="site-nav"
+          data-nav
+          aria-label="Principal"
+          data-repeat="navigation.items"
+        >
+          <a data-repeat-item data-bind="label" data-bind-attr="href:href">Seccion</a>
         </nav>
 
         <button
@@ -57,7 +56,7 @@
           class="btn btn-primary btn-small"
           data-bind="hero.primaryCtaLabel"
           data-bind-attr="href:hero.primaryCtaHref"
-        ></a>
+        >CTA</a>
       </div>
     </header>
 
@@ -71,53 +70,40 @@
         <div class="container hero-grid">
           <div class="hero-copy" data-stagger="0.08">
             <p class="eyebrow" data-bind="brand.tagline" data-reveal></p>
-            <h1 data-bind="hero.headline" data-reveal></h1>
-            <p class="lead" data-bind="hero.subheadline" data-reveal></p>
+            <h1 data-bind="hero.headline" data-reveal>Titulo principal</h1>
+            <p class="lead" data-bind="hero.subheadline" data-reveal>Subtitulo breve.</p>
 
             <div class="hero-actions" data-reveal>
               <a
                 class="btn btn-primary"
                 data-bind="hero.primaryCtaLabel"
                 data-bind-attr="href:hero.primaryCtaHref"
-              ></a>
+              >CTA principal</a>
               <a
                 class="btn btn-secondary"
                 data-bind="hero.secondaryCtaLabel"
                 data-bind-attr="href:hero.secondaryCtaHref"
-              ></a>
+              >CTA secundario</a>
             </div>
 
             <div class="hero-meta" data-reveal>
-              <span class="meta-item" data-bind="contact.hours"></span>
-              <span class="meta-item" data-bind="contact.address"></span>
+              <span class="meta-item" data-bind="contact.hours">Horario</span>
+              <span class="meta-item" data-bind="contact.address">Ciudad</span>
             </div>
           </div>
 
-          <div
-            class="hero-visual signature-visual"
-            aria-hidden="true"
-            data-reveal
-          >
-            <div class="signature-orb" data-parallax="0.06"></div>
-            <div class="signature-grid"></div>
-
-            <svg
-              class="signature-lines"
-              viewBox="0 0 320 320"
-              role="presentation"
-              aria-hidden="true"
-            >
-              <path d="M16 80 C 80 40, 160 40, 240 80" />
-              <path d="M32 160 C 120 120, 200 140, 304 190" />
-              <path d="M16 248 C 100 220, 180 230, 300 280" />
-            </svg>
+          <div class="hero-visual hero-media" data-reveal>
+            <img
+              class="hero-image"
+              data-bind-attr="src:hero.media.src;alt:hero.media.alt;width:hero.media.width;height:hero.media.height;loading:hero.media.loading;decoding:hero.media.decoding;fetchpriority:hero.media.fetchpriority"
+            />
           </div>
         </div>
       </section>
 
       <section id="proof" class="section" data-section="proof" data-variant="a">
         <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.proof.title"></h2>
+          <h2 data-bind="sections.proof.title">Resultados</h2>
         </div>
 
         <div
@@ -138,7 +124,7 @@
         data-variant="a"
       >
         <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.services.title"></h2>
+          <h2 data-bind="sections.services.title">Servicios</h2>
         </div>
 
         <div class="container cards-grid" data-repeat="sections.services.items">
@@ -156,7 +142,7 @@
         data-variant="a"
       >
         <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.process.title"></h2>
+          <h2 data-bind="sections.process.title">Proceso</h2>
         </div>
 
         <div
@@ -178,7 +164,7 @@
         data-variant="a"
       >
         <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.testimonials.title"></h2>
+          <h2 data-bind="sections.testimonials.title">Testimonios</h2>
         </div>
 
         <div
@@ -195,7 +181,7 @@
 
       <section id="faq" class="section" data-section="faq" data-variant="a">
         <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.faq.title"></h2>
+          <h2 data-bind="sections.faq.title">Preguntas frecuentes</h2>
         </div>
 
         <div
@@ -221,15 +207,15 @@
       <section id="cta" class="section cta" data-section="cta" data-variant="a">
         <div class="container cta-card" data-reveal>
           <div class="cta-copy">
-            <h2 data-bind="sections.cta.title"></h2>
-            <p data-bind="sections.cta.subtitle"></p>
+            <h2 data-bind="sections.cta.title">Listo para empezar?</h2>
+            <p data-bind="sections.cta.subtitle">Comparte tu idea y te respondemos.</p>
           </div>
 
           <a
             class="btn btn-primary"
             data-bind="sections.cta.buttonLabel"
             data-bind-attr="href:sections.cta.buttonHref"
-          ></a>
+          >CTA final</a>
         </div>
       </section>
     </main>
@@ -237,46 +223,32 @@
     <footer class="section footer" data-section="footer">
       <div class="container footer-grid">
         <div>
-          <p class="footer-title" data-bind="brand.name"></p>
-          <p class="footer-tagline" data-bind="brand.tagline"></p>
+          <p class="footer-title" data-bind="brand.name">Nombre del proyecto</p>
+          <p class="footer-tagline" data-bind="brand.tagline">Tagline</p>
         </div>
 
         <div>
-          <p class="footer-label">Contacto</p>
-          <a
-            class="footer-link"
-            data-bind="contact.email"
-            data-bind-attr="href:contact.email"
-          ></a>
-          <a
-            class="footer-link"
-            data-bind="contact.phone"
-            data-bind-attr="href:contact.phone"
-          ></a>
-          <a
-            class="footer-link"
-            data-bind="contact.whatsapp"
-            data-bind-attr="href:contact.whatsapp"
-          ></a>
+          <p class="footer-label" data-bind="footer.contactLabel">Contacto</p>
+          <div class="footer-links" data-repeat="footer.contactLinks">
+            <a
+              class="footer-link"
+              data-repeat-item
+              data-bind="label"
+              data-bind-attr="href:href"
+            >Contacto</a>
+          </div>
         </div>
 
         <div>
-          <p class="footer-label">Social</p>
-          <a
-            class="footer-link"
-            data-bind-attr="href:social.instagram"
-            data-optional
-          >Instagram</a>
-          <a
-            class="footer-link"
-            data-bind-attr="href:social.linkedin"
-            data-optional
-          >LinkedIn</a>
-          <a
-            class="footer-link"
-            data-bind-attr="href:social.tiktok"
-            data-optional
-          >TikTok</a>
+          <p class="footer-label" data-bind="footer.socialLabel">Social</p>
+          <div class="footer-links" data-repeat="footer.socialLinks">
+            <a
+              class="footer-link"
+              data-repeat-item
+              data-bind="label"
+              data-bind-attr="href:href"
+            >Red social</a>
+          </div>
         </div>
       </div>
     </footer>
