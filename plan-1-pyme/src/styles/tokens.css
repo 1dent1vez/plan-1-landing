@@ -30,6 +30,8 @@
   --s4: 32px;
   --s5: 40px;
   --s6: 64px;
+  --section-pad: clamp(2.5rem, 8vw, 5rem);
+  --section-pad-sm: clamp(2.25rem, 7vw, 3.5rem);
   --s-1: var(--s1);
   --s-2: var(--s2);
   --s-3: var(--s3);
@@ -51,10 +53,12 @@
   --lh-body: 1.6;
   --tracking-tight: -0.02em;
   --tracking-wide: 0.08em;
-  --container: 1200px;
+  --content-max: 64ch;
+  --content-narrow: 50ch;
+  --container: 1160px;
   --container-pad: var(--s2);
   --grid-gap: var(--s-3);
-  --nav-height: 72px;
+  --nav-height: 64px;
   --blur: 16px;
   --dur-fast: 160ms;
   --dur-med: 320ms;

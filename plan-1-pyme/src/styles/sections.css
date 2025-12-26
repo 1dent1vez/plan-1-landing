@@ -1,4 +1,16 @@
-﻿.hero {
+.section {
+  position: relative;
+}
+
+.section + .section {
+  border-top: var(--border-1) solid var(--color-border);
+}
+
+.section-alt {
+  background: var(--surface);
+}
+
+.hero {
   position: relative;
   background: var(--hero-grad);
 }
@@ -12,35 +24,34 @@
 .hero-copy {
   display: grid;
   gap: var(--s-3);
+  max-width: var(--content-max);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-2);
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.hero-actions .btn {
-  width: 100%;
+  align-items: center;
 }
 
 .hero-meta {
   display: flex;
-  flex-direction: column;
-  gap: var(--s-1);
+  flex-wrap: wrap;
+  gap: var(--s-2);
   color: var(--muted);
   font-size: var(--fs-small);
+  padding-top: var(--s-2);
+  border-top: var(--border-1) solid var(--color-border);
 }
 
 .hero-media {
   position: relative;
   border-radius: var(--r-3);
-  background: var(--panel-grad);
+  background: var(--surface);
   border: var(--border-1) solid var(--color-border-strong);
-  overflow: hidden;
-  min-height: 240px;
+  padding: var(--s-2);
+  min-height: clamp(220px, 40vw, 420px);
+  aspect-ratio: 4 / 3;
 }
 
 .hero-image {
@@ -48,11 +59,15 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: inherit;
+  border-radius: calc(var(--r-3) - 6px);
+  background: var(--surface-2);
 }
 
 .section-header {
   margin-bottom: var(--s-4);
+  max-width: var(--content-narrow);
+  display: grid;
+  gap: var(--s-2);
 }
 
 .metrics-grid,
@@ -60,16 +75,20 @@
 .process-grid {
   display: grid;
   gap: var(--s-3);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .metric-card {
   text-align: left;
+  display: grid;
+  gap: var(--s-1);
+  border-left: 3px solid var(--color-primary);
 }
 
 .metric-value {
   font-size: var(--fs-h2);
   font-weight: 700;
-  color: var(--accent-2);
+  color: var(--color-text);
 }
 
 .metric-label {
@@ -82,6 +101,17 @@
   color: var(--muted);
 }
 
+.process-card {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.service-card,
+.testimonial-card {
+  display: grid;
+  gap: var(--s-2);
+}
+
 .step-index {
   display: inline-flex;
   align-items: center;
@@ -89,14 +119,20 @@
   width: var(--s-4);
   height: var(--s-4);
   border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--ink);
+  border: var(--border-1) solid var(--color-border-strong);
+  color: var(--color-text);
   font-weight: 700;
   margin-bottom: var(--s-2);
 }
 
 .testimonial-quote {
   font-size: var(--fs-body);
+}
+
+.testimonial-quote::before {
+  content: "“";
+  color: var(--accent-2);
+  margin-right: var(--s-1);
 }
 
 .testimonial-name {
@@ -137,16 +173,82 @@
   color: var(--muted);
 }
 
-@media (min-width: 1024px) {
+.cta-copy {
+  max-width: var(--content-narrow);
+}
+
+@media (max-width: 767px) {
+  main > .section {
+    scroll-margin-top: calc(var(--nav-height) + var(--s-2));
+  }
+
+  .hero-grid {
+    gap: var(--s-4);
+  }
+
+  .hero-copy {
+    gap: var(--s-2);
+    max-width: 52ch;
+  }
+
   .hero-actions {
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .hero-actions .btn {
-    width: auto;
+    width: 100%;
   }
 
+  .section-header {
+    margin-bottom: var(--s-3);
+    max-width: 48ch;
+  }
+
+  .metrics-grid,
+  .cards-grid,
+  .process-grid {
+    gap: var(--s-2);
+  }
+
+  .metric-card {
+    padding-left: var(--s-2);
+  }
+
+  .process-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--s-2);
+    row-gap: var(--s-1);
+    align-items: start;
+  }
+
+  .process-card .step-index {
+    margin-bottom: 0;
+    grid-row: 1 / span 2;
+  }
+
+  .process-card h3,
+  .process-card p {
+    grid-column: 2;
+  }
+
+  .cta-card {
+    padding: var(--s-4);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-actions {
+    align-items: center;
+  }
+
+  .hero-meta {
+    column-gap: var(--s-3);
+  }
+}
+
+@media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -159,12 +261,6 @@
     grid-column: 7 / span 6;
   }
 
-  .metrics-grid,
-  .cards-grid,
-  .process-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .cta-card {
     grid-template-columns: 1fr auto;
   }
@@ -174,4 +270,14 @@
   }
 }
 
+@media (min-width: 1280px) {
+  .hero-grid {
+    gap: var(--s-6);
+  }
 
+  .hero-copy,
+  .section-header,
+  .cta-copy {
+    max-width: var(--content-max);
+  }
+}
