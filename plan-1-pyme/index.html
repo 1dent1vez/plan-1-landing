@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title data-bind="meta.title">Landing</title>
+    <title data-bind="meta.title"></title>
     <meta name="description" data-bind-attr="content:meta.description" content="" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,25 +19,15 @@
 
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
-    <header class="site-header" data-reveal>
+    <header id="header" class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#hero">
-          <span
-            class="brand-mark"
-            aria-hidden="true"
-            data-bind="brand.logoText"
-          ></span>
+          <span class="brand-mark" aria-hidden="true" data-bind="brand.logoText"></span>
           <span class="brand-name" data-bind="brand.name"></span>
         </a>
 
-        <nav
-          class="nav"
-          id="site-nav"
-          data-nav
-          aria-label="Principal"
-          data-repeat="navigation.items"
-        >
-          <a data-repeat-item data-bind="label" data-bind-attr="href:href">Seccion</a>
+        <nav class="nav" id="site-nav" data-nav aria-label="Principal" data-repeat="navigation.items">
+          <a data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
         </nav>
 
         <button
@@ -52,47 +42,33 @@
           <span></span>
         </button>
 
-        <a
-          class="btn btn-primary btn-small"
-          data-bind="hero.primaryCtaLabel"
-          data-bind-attr="href:hero.primaryCtaHref"
-        >CTA</a>
+        <a class="btn btn-primary btn-small" data-bind="whatsapp.buttonLabel" data-whatsapp-link></a>
       </div>
     </header>
 
     <main id="main">
-      <section
-        id="hero"
-        class="section hero"
-        data-section="hero"
-        data-variant="a"
-      >
+      <section id="hero" class="section hero" data-section="hero">
         <div class="container hero-grid">
-          <div class="hero-copy" data-stagger="0.08">
-            <p class="eyebrow" data-bind="brand.tagline" data-reveal></p>
-            <h1 data-bind="hero.headline" data-reveal>Titulo principal</h1>
-            <p class="lead" data-bind="hero.subheadline" data-reveal>Subtitulo breve.</p>
+          <div class="hero-copy">
+            <p class="eyebrow" data-bind="brand.tagline"></p>
+            <h1 data-bind="hero.headline"></h1>
+            <p class="lead" data-bind="hero.subheadline"></p>
 
-            <div class="hero-actions" data-reveal>
-              <a
-                class="btn btn-primary"
-                data-bind="hero.primaryCtaLabel"
-                data-bind-attr="href:hero.primaryCtaHref"
-              >CTA principal</a>
-              <a
-                class="btn btn-secondary"
-                data-bind="hero.secondaryCtaLabel"
-                data-bind-attr="href:hero.secondaryCtaHref"
-              >CTA secundario</a>
+            <ul class="hero-bullets" data-repeat="hero.bullets">
+              <li data-repeat-item data-bind="text"></li>
+            </ul>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" data-bind="hero.primaryCtaLabel" data-whatsapp-link></a>
             </div>
 
-            <div class="hero-meta" data-reveal>
-              <span class="meta-item" data-bind="contact.hours">Horario</span>
-              <span class="meta-item" data-bind="contact.address">Ciudad</span>
+            <div class="hero-meta">
+              <span class="meta-item" data-bind="contact.hours"></span>
+              <span class="meta-item" data-bind="contact.address"></span>
             </div>
           </div>
 
-          <div class="hero-visual hero-media" data-reveal>
+          <div class="hero-visual hero-media">
             <img
               class="hero-image"
               data-bind-attr="src:hero.media.src;alt:hero.media.alt;width:hero.media.width;height:hero.media.height;loading:hero.media.loading;decoding:hero.media.decoding;fetchpriority:hero.media.fetchpriority"
@@ -101,55 +77,56 @@
         </div>
       </section>
 
-      <section id="proof" class="section" data-section="proof" data-variant="a">
-        <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.proof.title">Resultados</h2>
-        </div>
-
-        <div
-          class="container metrics-grid"
-          data-repeat="sections.proof.metrics"
-        >
-          <article class="card metric-card" data-repeat-item data-reveal>
-            <p class="metric-value" data-bind="value"></p>
-            <p class="metric-label" data-bind="label"></p>
-          </article>
-        </div>
-      </section>
-
-      <section
-        id="services"
-        class="section section-alt"
-        data-section="services"
-        data-variant="a"
-      >
-        <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.services.title">Servicios</h2>
+      <section id="servicios" class="section section-alt" data-section="services">
+        <div class="container section-header">
+          <h2 data-bind="sections.services.title"></h2>
         </div>
 
         <div class="container cards-grid" data-repeat="sections.services.items">
-          <article class="card service-card" data-repeat-item data-reveal>
+          <article class="card service-card" data-repeat-item>
+            <h3 data-bind="title"></h3>
+            <p data-bind="text"></p>
+          </article>
+        </div>
+
+        <div class="container services-cta">
+          <a class="text-link" data-bind="sections.services.whatsappCtaLabel" data-whatsapp-link></a>
+        </div>
+      </section>
+
+      <section id="beneficios" class="section" data-section="benefits">
+        <div class="container section-header">
+          <h2 data-bind="sections.benefits.title"></h2>
+        </div>
+
+        <div class="container cards-grid" data-repeat="sections.benefits.items">
+          <article class="card benefit-card" data-repeat-item>
             <h3 data-bind="title"></h3>
             <p data-bind="text"></p>
           </article>
         </div>
       </section>
 
-      <section
-        id="process"
-        class="section"
-        data-section="process"
-        data-variant="a"
-      >
-        <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.process.title">Proceso</h2>
+      <section id="resultados" class="section" data-section="proof">
+        <div class="container section-header">
+          <h2 data-bind="sections.proof.title"></h2>
         </div>
 
-        <div
-          class="container process-grid"
-          data-repeat="sections.process.steps"
-        >
-          <article class="card process-card" data-repeat-item data-reveal>
+        <div class="container metrics-grid" data-repeat="sections.proof.metrics">
+          <article class="card metric-card" data-repeat-item>
+            <p class="metric-value" data-bind="value"></p>
+            <p class="metric-label" data-bind="label"></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proceso" class="section section-alt" data-section="process">
+        <div class="container section-header">
+          <h2 data-bind="sections.process.title"></h2>
+        </div>
+
+        <div class="container process-grid" data-repeat="sections.process.steps">
+          <article class="card process-card" data-repeat-item>
             <span class="step-index" data-bind="step"></span>
             <h3 data-bind="title"></h3>
             <p data-bind="text"></p>
@@ -157,21 +134,13 @@
         </div>
       </section>
 
-      <section
-        id="testimonials"
-        class="section section-alt"
-        data-section="testimonials"
-        data-variant="a"
-      >
-        <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.testimonials.title">Testimonios</h2>
+      <section id="testimonios" class="section" data-section="testimonials">
+        <div class="container section-header">
+          <h2 data-bind="sections.testimonials.title"></h2>
         </div>
 
-        <div
-          class="container cards-grid"
-          data-repeat="sections.testimonials.items"
-        >
-          <article class="card testimonial-card" data-repeat-item data-reveal>
+        <div class="container cards-grid" data-repeat="sections.testimonials.items">
+          <article class="card testimonial-card" data-repeat-item>
             <p class="testimonial-quote" data-bind="quote"></p>
             <p class="testimonial-name" data-bind="name"></p>
             <p class="testimonial-role" data-bind="role"></p>
@@ -179,75 +148,91 @@
         </div>
       </section>
 
-      <section id="faq" class="section" data-section="faq" data-variant="a">
-        <div class="container section-header" data-reveal>
-          <h2 data-bind="sections.faq.title">Preguntas frecuentes</h2>
+      <section id="ubicacion" class="section section-alt" data-section="location">
+        <div class="container section-header">
+          <h2 data-bind="sections.location.title"></h2>
         </div>
 
-        <div
-          class="container accordion"
-          data-accordion
-          data-repeat="sections.faq.items"
-        >
-          <div class="accordion-item" data-repeat-item>
-            <button
-              class="accordion-trigger"
-              type="button"
-              aria-expanded="false"
-              data-bind="question"
-            ></button>
+        <div class="container location-grid">
+          <div class="card location-card">
+            <p class="location-text" data-bind="contact.address"></p>
+            <p class="location-text" data-bind="contact.hours"></p>
+            <a class="text-link" data-bind="sections.location.actionLabel" data-whatsapp-link></a>
+          </div>
+        </div>
+      </section>
 
-            <div class="accordion-panel">
-              <p data-bind="answer"></p>
+      <section id="faq" class="section" data-section="faq">
+        <div class="container section-header">
+          <h2 data-bind="sections.faq.title"></h2>
+        </div>
+
+        <div class="container">
+          <div class="accordion" data-accordion data-repeat="sections.faq.items">
+            <div class="accordion-item" data-repeat-item>
+              <button class="accordion-trigger" type="button" data-bind="question" aria-expanded="false"></button>
+              <div class="accordion-panel">
+                <p data-bind="answer"></p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="cta" class="section cta" data-section="cta" data-variant="a">
-        <div class="container cta-card" data-reveal>
-          <div class="cta-copy">
-            <h2 data-bind="sections.cta.title">Listo para empezar?</h2>
-            <p data-bind="sections.cta.subtitle">Comparte tu idea y te respondemos.</p>
+      <section id="contacto" class="section" data-section="contact">
+        <div class="container contact-card">
+          <div class="contact-copy">
+            <h2 data-bind="sections.contact.title"></h2>
+            <p data-bind="sections.contact.subtitle"></p>
+            <a class="text-link" data-bind="contact.phone" data-bind-attr="href:contact.phoneHref"></a>
           </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary btn-large" data-bind="sections.contact.buttonLabel" data-whatsapp-link></a>
+          </div>
+        </div>
+      </section>
 
-          <a
-            class="btn btn-primary"
-            data-bind="sections.cta.buttonLabel"
-            data-bind-attr="href:sections.cta.buttonHref"
-          >CTA final</a>
+      <section id="cta" class="section cta" data-section="cta">
+        <div class="container">
+          <div class="cta-card">
+            <div class="cta-copy">
+              <h2 data-bind="sections.cta.title"></h2>
+              <p data-bind="sections.cta.subtitle"></p>
+            </div>
+            <a class="btn btn-primary btn-large" data-bind="sections.cta.buttonLabel" data-bind-attr="href:sections.cta.buttonHref"></a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="section footer" data-section="footer">
+    <footer id="footer" class="section footer" data-section="footer">
       <div class="container footer-grid">
-        <div>
-          <p class="footer-title" data-bind="brand.name">Nombre del proyecto</p>
-          <p class="footer-tagline" data-bind="brand.tagline">Tagline</p>
+        <div class="footer-brand">
+          <p class="footer-title" data-bind="brand.name"></p>
+          <p class="footer-tagline" data-bind="brand.tagline"></p>
+          <p class="footer-legal">
+            <span data-bind="brand.name"></span>
+            <span aria-hidden="true">-</span>
+            <span data-year></span>
+          </p>
+          <a
+            class="footer-link"
+            data-bind="footer.privacyLink.label"
+            data-bind-attr="href:footer.privacyLink.href"
+          ></a>
         </div>
 
         <div>
-          <p class="footer-label" data-bind="footer.contactLabel">Contacto</p>
+          <p class="footer-label" data-bind="footer.contactLabel"></p>
           <div class="footer-links" data-repeat="footer.contactLinks">
-            <a
-              class="footer-link"
-              data-repeat-item
-              data-bind="label"
-              data-bind-attr="href:href"
-            >Contacto</a>
+            <a class="footer-link" data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
           </div>
         </div>
 
         <div>
-          <p class="footer-label" data-bind="footer.socialLabel">Social</p>
+          <p class="footer-label" data-bind="footer.socialLabel"></p>
           <div class="footer-links" data-repeat="footer.socialLinks">
-            <a
-              class="footer-link"
-              data-repeat-item
-              data-bind="label"
-              data-bind-attr="href:href"
-            >Red social</a>
+            <a class="footer-link" data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
           </div>
         </div>
       </div>

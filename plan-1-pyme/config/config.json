@@ -56,20 +56,26 @@
     },
     "navigation": {
       "items": [
-        { "label": "Servicios", "href": "#services" },
-        { "label": "Resultados", "href": "#proof" },
-        { "label": "Proceso", "href": "#process" },
-        { "label": "Preguntas", "href": "#faq" },
-        { "label": "Contacto", "href": "#cta" }
+        { "label": "Inicio", "href": "#hero" },
+        { "label": "Servicios", "href": "#servicios" },
+        { "label": "Contacto", "href": "#contacto" }
       ]
     },
+    "whatsapp": {
+      "number": "15551234567",
+      "message": "Hola, quiero mas informacion.",
+      "buttonLabel": "WhatsApp"
+    },
     "hero": {
-      "headline": "Escribe aqui tu gran promesa de valor",
-      "subheadline": "Aqui va una descripcion breve sobre lo que haces, para quien lo haces y que problema resuelves.",
-      "primaryCtaLabel": "Boton principal",
+      "headline": "Servicio principal en Ciudad",
+      "subheadline": "Descripcion breve sobre lo que haces, para quien lo haces y que problema resuelves.",
+      "primaryCtaLabel": "Escribir por WhatsApp",
       "primaryCtaHref": "#cta",
-      "secondaryCtaLabel": "Boton secundario",
-      "secondaryCtaHref": "#process",
+      "bullets": [
+        { "text": "Respuesta rapida por WhatsApp" },
+        { "text": "Atencion personalizada para tu necesidad" },
+        { "text": "Soluciones claras y directas" }
+      ],
       "media": {
         "type": "image",
         "src": "assets/logo-sin-fondo2.png",
@@ -83,12 +89,14 @@
     },
     "contact": {
       "hours": "Lun-Vie 9:00 - 18:00",
-      "address": "Ciudad, Pais"
+      "address": "Ciudad, Pais",
+      "phone": "+1 555 123 4567",
+      "phoneHref": "tel:+15551234567"
     },
     "sections": {
       "services": {
         "enabled": true,
-        "title": "Nuestros servicios",
+        "title": "Servicios",
         "items": [
           {
             "title": "Servicio principal 1",
@@ -102,7 +110,8 @@
             "title": "Servicio principal 3",
             "text": "Descripcion corta del servicio con el beneficio principal para el cliente."
           }
-        ]
+        ],
+        "whatsappCtaLabel": "Si no ves lo que buscas, escribeme por WhatsApp"
       },
       "proof": {
         "enabled": true,
@@ -145,6 +154,35 @@
           }
         ]
       },
+      "benefits": {
+        "enabled": true,
+        "title": "Por que elegirnos",
+        "items": [
+          {
+            "title": "Atencion rapida",
+            "text": "Resolvemos tu solicitud en tiempos cortos."
+          },
+          {
+            "title": "Experiencia comprobada",
+            "text": "Procesos claros para entregas sin sorpresas."
+          },
+          {
+            "title": "Soporte cercano",
+            "text": "Acompanamiento directo por WhatsApp."
+          }
+        ]
+      },
+      "location": {
+        "enabled": true,
+        "title": "Ubicacion y horario",
+        "actionLabel": "Escribenos por WhatsApp para confirmar disponibilidad."
+      },
+      "contact": {
+        "enabled": true,
+        "title": "Contactanos",
+        "subtitle": "Escribenos ahora y recibe respuesta rapida.",
+        "buttonLabel": "Hablar por WhatsApp"
+      },
       "faq": {
         "enabled": true,
         "title": "Preguntas frecuentes",
@@ -174,6 +212,10 @@
     "footer": {
       "contactLabel": "Contacto",
       "socialLabel": "Social",
+      "privacyLink": {
+        "label": "Aviso de privacidad",
+        "href": "/privacidad.html"
+      },
       "contactLinks": [
         { "label": "hola@tudominio.com", "href": "mailto:hola@tudominio.com" },
         { "label": "+1 555 123 4567", "href": "tel:+15551234567" },
