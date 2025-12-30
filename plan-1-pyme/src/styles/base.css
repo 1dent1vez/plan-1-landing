@@ -1,11 +1,23 @@
-﻿* {
+﻿/*
+  base.css
+  ------------------------------------------------------------------------------
+  Responsabilidad
+  - Definir reglas base de layout, tipografía y comportamiento global.
+  - Implementar un enfoque mobile-first y accesible.
+  - Proveer un grid y contenedores reutilizables.
+*/
+
+/* Reset mínimo y box model consistente */
+* {
   box-sizing: border-box;
 }
 
+/* Evitar zoom automático de texto en iOS Safari */
 html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Configuración base de body */
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -20,15 +32,18 @@ body {
   overflow-x: hidden;
 }
 
+/* Enlaces */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* Botones heredar font */
 button {
   font: inherit;
 }
 
+/* Estados de foco accesibles */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -37,6 +52,7 @@ textarea:focus-visible {
   outline-offset: var(--s-1);
 }
 
+/* Imágenes y SVG responsivos */
 img,
 svg {
   max-width: 100%;
@@ -46,6 +62,9 @@ svg {
 img {
   height: auto;
 }
+
+/* TIPOGRAFÍA BASE ---------------------------------------------------------- */
+
 p,
 h1,
 h2,
@@ -53,10 +72,23 @@ h3 {
   margin: 0;
 }
 
-p {
-  max-width: var(--content-max);
+/* Optimización de lectura (Mobile First):
+   'balance' evita líneas huérfanas en títulos.
+   'pretty' evita saltos de línea feos en párrafos.
+*/
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
+p {
+  max-width: var(--content-max);
+  text-wrap: pretty;
+}
+
+/* Escala tipográfica */
 h1 {
   font-size: var(--fs-h1);
   line-height: var(--lh-tight);
@@ -74,29 +106,36 @@ h3 {
   line-height: var(--lh-subtitle);
 }
 
+/* LAYOUT ------------------------------------------------------------------- */
+
 main {
   position: relative;
 }
 
+/* Secciones: Padding compacto por defecto (Mobile) */
 .section {
-  padding: var(--section-pad) 0;
+  padding: var(--section-pad-sm) 0;
 }
 
 .section-alt {
   background: var(--surface);
 }
 
+/* Contenedor centralizado fluido con topes */
 .container {
   width: min(var(--container), 100% - (var(--container-pad) * 2));
   margin: 0 auto;
   max-width: var(--container);
 }
 
+/* Grid base: 4 columnas (Mobile/Tablet Vertical) */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--grid-gap);
 }
+
+/* UTILITIES ---------------------------------------------------------------- */
 
 .eyebrow {
   text-transform: uppercase;
@@ -109,39 +148,23 @@ main {
   color: var(--muted);
 }
 
+/* RESPONSIVE (Escritorio y ajustes mayores) -------------------------------- */
+
+/* Tablet y superior: padding normal de sección */
+@media (min-width: 768px) {
+  .section {
+    padding: var(--section-pad) 0;
+  }
+}
+
+/* Desktop: Grid de 12 columnas */
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: none;
-  }
-}
-
-@media (max-width: 767px) {
-  h1,
-  h2,
-  h3 {
-    text-wrap: balance;
-  }
-
-  p {
-    text-wrap: pretty;
-  }
-
-  .section {
-    padding: var(--section-pad-sm) 0;
-  }
-}
-
-@media (max-width: 600px) {
-  :root {
-    --container-pad: 20px;
-  }
-}
+/* ACCESIBILIDAD ------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -153,4 +176,3 @@ main {
     scroll-behavior: auto !important;
   }
 }
-

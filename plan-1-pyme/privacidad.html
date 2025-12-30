@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!--
+      privacidad.html
+      ----------------------------------------------------------------------------
+      Responsabilidad
+      - Documento legal con formato profesional "Clean Contract".
+      - Inyección dinámica de datos (Nombre Legal, Dirección, Correo) desde config.json.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aviso de Privacidad | Privacidad</title>
+    <meta name="description" content="Aviso de Privacidad y manejo de datos personales." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/styles/tokens.css" />
+    <link rel="stylesheet" href="src/styles/base.css" />
+    <link rel="stylesheet" href="src/styles/components.css" />
+    <link rel="stylesheet" href="src/styles/sections.css" />
+
+    <style>
+      .legal-container {
+        width: 90%; /* Fluido en móviles */
+        max-width: 1024px; /* Más ancho y proporcional en Desktop */
+        margin: 0 auto;
+        padding-top: var(--s-5);
+        padding-bottom: var(--s-6);
+      }
+
+      .legal-header {
+        text-align: center;
+        margin-bottom: var(--s-6);
+        padding-bottom: var(--s-4);
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .legal-header h1 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        color: var(--color-text);
+        margin-bottom: var(--s-2);
+        letter-spacing: -0.02em;
+      }
+
+      .legal-meta {
+        font-size: 0.9rem;
+        color: var(--muted);
+        font-family: monospace;
+        background: var(--surface-2);
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 4px;
+      }
+
+      .legal-body {
+        /* Centramos el texto de lectura para que no sea cansadísimo leer líneas eternas */
+        max-width: 75ch; 
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .legal-intro {
+        font-size: 1.15rem;
+        margin-bottom: var(--s-5);
+        color: var(--color-text);
+        border-left: 4px solid var(--color-primary);
+        padding-left: var(--s-3);
+      }
+
+      .legal-section {
+        margin-bottom: var(--s-5);
+      }
+
+      .legal-section h2 {
+        font-size: 1.25rem;
+        color: var(--color-text);
+        margin-bottom: var(--s-3);
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .section-number {
+        font-size: 0.9rem;
+        color: var(--color-primary);
+        font-weight: 700;
+        opacity: 0.8;
+      }
+
+      .legal-body ul {
+        list-style: none;
+        padding: 0;
+        margin: var(--s-3) 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .legal-body li {
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .legal-body li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
+      }
+
+      strong {
+        color: var(--color-text);
+        font-weight: 600;
+      }
+
+      .legal-link {
+        color: var(--color-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+      }
+      .legal-link:hover {
+        text-decoration-thickness: 2px;
+      }
+
+      .highlight-box {
+        background: var(--surface-2);
+        border: 1px solid var(--color-border);
+        padding: var(--s-3);
+        border-radius: var(--r-1);
+        margin: var(--s-3) 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header id="header" class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">
+          <span
+            class="brand-mark"
+            aria-hidden="true"
+            data-bind="brand.logoText"
+          ></span>
+          <span class="brand-name" data-bind="brand.name"></span>
+        </a>
+
+        <!-- Botón de regreso inteligente -->
+        <a 
+          href="index.html" 
+          class="btn btn-secondary btn-small"
+          onclick="if(document.referrer.indexOf(window.location.hostname) !== -1) { history.back(); return false; }"
+        >
+          ← Volver
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section section-alt">
+        <div class="container legal-container">
+          
+          <div class="legal-header">
+            <h1>Aviso de Privacidad – México</h1>
+            <div class="legal-meta">
+              Fecha de última actualización: <span data-year></span>
+            </div>
+          </div>
+
+          <div class="legal-body">
+            
+            <div class="legal-intro">
+              <p>
+                <strong data-bind="footer.legalName"></strong>, con domicilio en <strong data-bind="contact.address"></strong>, es responsable del tratamiento de los datos personales recabados, conforme a lo dispuesto por la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong> y demás normatividad aplicable.
+              </p>
+            </div>
+
+            <!-- 1 -->
+            <div class="legal-section">
+              <h2><span class="section-number">1.</span> Datos personales que se recaban</h2>
+              <p>
+                De forma directa, a través de este sitio web, WhatsApp, llamadas telefónicas o formularios, podemos recabar los siguientes datos personales:
+              </p>
+              <ul>
+                <li>Nombre</li>
+                <li>Número telefónico</li>
+                <li>Correo electrónico</li>
+                <li>Mensajes o información relacionada con el servicio solicitado</li>
+              </ul>
+              <p>
+                <em>No se recaban datos personales sensibles conforme al artículo 3, fracción VI de la LFPDPPP.</em>
+              </p>
+            </div>
+
+            <!-- 2 -->
+            <div class="legal-section">
+              <h2><span class="section-number">2.</span> Finalidades del tratamiento</h2>
+              <p>Los datos personales serán utilizados para las siguientes finalidades primarias:</p>
+              <ul>
+                <li>Dar respuesta a mensajes y solicitudes de información</li>
+                <li>Proveer los servicios o productos solicitados</li>
+                <li>Elaborar cotizaciones</li>
+                <li>Agendar citas y dar seguimiento comercial</li>
+              </ul>
+              
+              <p style="margin-top: 1.5rem;"><strong>Finalidades secundarias (opcionales):</strong></p>
+              <ul>
+                <li>Envío de información promocional relacionado con nuestros servicios</li>
+              </ul>
+              <p class="fs-small">
+                Si no desea que sus datos se utilicen para finalidades secundarias, puede manifestarlo mediante solicitud al correo señalado en la sección de derechos ARCO.
+              </p>
+            </div>
+
+            <!-- 3 -->
+            <div class="legal-section">
+              <h2><span class="section-number">3.</span> Fundamento legal</h2>
+              <p>
+                El tratamiento de datos se realiza conforme a los artículos 8, 15, 16 y demás relativos de la LFPDPPP y su Reglamento.
+              </p>
+            </div>
+
+            <!-- 4 -->
+            <div class="legal-section">
+              <h2><span class="section-number">4.</span> Transferencia de datos personales</h2>
+              <p>
+                Sus datos personales no serán transferidos a terceros sin su consentimiento, salvo en los casos previstos por el artículo 37 de la LFPDPPP, como requerimientos de autoridad competente.
+              </p>
+            </div>
+
+            <!-- 5 -->
+            <div class="legal-section">
+              <h2><span class="section-number">5.</span> Uso de WhatsApp y plataformas externas</h2>
+              <p>
+                El contacto por WhatsApp implica el uso de una plataforma ajena a <strong data-bind="footer.legalName"></strong>. El envío de mensajes constituye consentimiento para recibir respuesta por el mismo medio. El tratamiento adicional que WhatsApp realice se rige por sus propias políticas de privacidad.
+              </p>
+            </div>
+
+            <!-- 6 -->
+            <div class="legal-section">
+              <h2><span class="section-number">6.</span> Medidas de seguridad</h2>
+              <p>
+                Se implementan medidas administrativas, técnicas y físicas razonables para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado.
+              </p>
+            </div>
+
+            <!-- 7 -->
+            <div class="legal-section">
+              <h2><span class="section-number">7.</span> Derechos ARCO</h2>
+              <p>
+                Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación y Oposición (ARCO), así como limitar el uso o divulgación de sus datos personales, mediante solicitud enviada a:
+              </p>
+              
+              <div class="highlight-box">
+                <p style="margin-bottom: 0.5rem;"><strong>Correo electrónico:</strong></p>
+                <a class="legal-link" data-bind="footer.contactLinks.0.label" data-bind-attr="href:footer.contactLinks.0.href"></a>
+              </div>
+
+              <p>La solicitud deberá contener:</p>
+              <ul>
+                <li>Nombre del titular</li>
+                <li>Medio para comunicar la respuesta</li>
+                <li>Descripción clara del derecho que desea ejercer</li>
+                <li>Identificación oficial vigente (escaneada o fotografía en caso digital)</li>
+              </ul>
+              <p>Se dará respuesta dentro de los plazos previstos en la legislación aplicable.</p>
+            </div>
+
+            <!-- 8 -->
+            <div class="legal-section">
+              <h2><span class="section-number">8.</span> Revocación del consentimiento</h2>
+              <p>
+                Usted puede revocar en cualquier momento el consentimiento otorgado para el tratamiento de sus datos personales enviando solicitud al correo mencionado. La revocación no tendrá efectos retroactivos cuando el tratamiento sea necesario para cumplir obligaciones legales.
+              </p>
+            </div>
+
+            <!-- 9 -->
+            <div class="legal-section">
+              <h2><span class="section-number">9.</span> Uso de cookies</h2>
+              <p>
+                Este sitio puede utilizar cookies con fines funcionales y estadísticos no identificables. Usted puede deshabilitarlas en la configuración de su navegador, lo que puede afectar algunas funciones del sitio.
+              </p>
+            </div>
+
+            <!-- 10 -->
+            <div class="legal-section">
+              <h2><span class="section-number">10.</span> Cambios al aviso de privacidad</h2>
+              <p>
+                Este aviso puede modificarse para cumplir con cambios legales o internos. Las actualizaciones estarán disponibles en este mismo sitio web.
+              </p>
+            </div>
+
+            <!-- 11 -->
+            <div class="legal-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+              <h2><span class="section-number">11.</span> Aceptación</h2>
+              <p>
+                Al utilizar este sitio web o nuestros medios de contacto, usted manifiesta que ha leído y acepta los términos del presente Aviso de Privacidad.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER IDENTICO AL INDEX -->
+    <footer id="footer" class="section footer" data-section="footer">
+      <div class="container">
+        
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="footer-title" data-bind="brand.name"></p>
+            <p class="footer-tagline" data-bind="brand.tagline"></p>
+            <a
+              class="footer-link"
+              data-bind="footer.privacyLink.label"
+              data-bind-attr="href:footer.privacyLink.href"
+            ></a>
+          </div>
+
+          <div>
+            <p class="footer-label" data-bind="footer.contactLabel"></p>
+            <div class="footer-links" data-repeat="footer.contactLinks">
+              <a
+                class="footer-link"
+                data-repeat-item
+                data-bind="label"
+                data-bind-attr="href:href"
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-label" data-bind="footer.socialLabel"></p>
+            <div class="social-list" data-repeat="footer.socialLinks">
+              <a
+                data-repeat-item
+                data-bind-attr="href:href; aria-label:label; class:network"
+                target="_blank"
+                rel="noopener"
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-line-wrapper">
+            <span>©</span>
+            <span data-year></span>
+            <span data-bind="footer.legalName"></span>
+            <span class="separator" aria-hidden="true">|</span>
+            <span data-bind="footer.rightsText"></span>
+            <span class="separator" aria-hidden="true">|</span>
+            <span data-bind="footer.creditPrefix"></span>
+            <a 
+              class="credit-link" 
+              data-bind="footer.creditName" 
+              data-bind-attr="href:footer.creditHref"
+              target="_blank" 
+              rel="noopener"
+            ></a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <script type="module" src="src/js/main.js"></script>
+  </body>
+</html>

@@ -5,43 +5,43 @@
     },
     "palette": {
       "brand": {
-        "primary": "#ffffff",
-        "secondary": "#000000"
+        "primary": "#818cf8",
+        "secondary": "#2dd4bf"
       },
       "neutral": {
-        "bg": "#000000",
-        "surface1": "#1a1a1a",
-        "surface2": "#262626",
-        "text": "#ffffff",
-        "muted": "#e5e5e5",
-        "ink": "#000000"
+        "bg": "#0f172a",
+        "surface1": "#1e293b",
+        "surface2": "#334155",
+        "text": "#f8fafc",
+        "muted": "#94a3b8",
+        "ink": "#020617"
       }
     },
     "borders": {
-      "default": "rgba(255, 255, 255, 0.3)",
-      "strong": "rgba(255, 255, 255, 0.6)"
+      "default": "rgba(148, 163, 184, 0.15)",
+      "strong": "rgba(148, 163, 184, 0.3)"
     },
     "components": {
-      "navBg": "rgba(0, 0, 0, 0.95)",
-      "footerBg": "#0a0a0a",
-      "buttonPrimaryText": "#000000",
-      "buttonSecondaryText": "#ffffff"
+      "navBg": "rgba(15, 23, 42, 0.8)",
+      "footerBg": "#020617",
+      "buttonPrimaryText": "#ffffff",
+      "buttonSecondaryText": "#f1f5f9"
     },
     "effects": {
-      "overlay": "rgba(0, 0, 0, 0.7)"
+      "overlay": "rgba(2, 6, 23, 0.8)"
     },
     "shadows": {
-      "shadow1": "0 4px 20px rgba(255, 255, 255, 0.05)",
-      "shadow2": "0 10px 40px rgba(0, 0, 0, 1)",
-      "shadow3": "0 20px 80px rgba(0, 0, 0, 1)"
+      "shadow1": "0 4px 6px -1px rgba(0, 0, 0, 0.5)",
+      "shadow2": "0 10px 15px -3px rgba(0, 0, 0, 0.6)",
+      "shadow3": "0 25px 50px -12px rgba(0, 0, 0, 0.7)"
     },
     "gradients": {
-      "hero": "radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 60%)",
-      "panel": "linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%)"
+      "hero": "radial-gradient(circle at 50% 0%, rgba(129, 140, 248, 0.12), transparent 70%)",
+      "panel": "linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%)"
     },
     "states": {
-      "focusRing": "#ffffff",
-      "hoverLift": "rgba(255, 255, 255, 0.1)"
+      "focusRing": "#818cf8",
+      "hoverLift": "rgba(255, 255, 255, 0.05)"
     }
   },
   "content": {
@@ -51,8 +51,8 @@
     },
     "brand": {
       "name": "NOMBRE PROYECTO",
-      "tagline": "Tu eslogan o frase corta aqui.",
-      "logoText": "LOGO"
+      "tagline": "Tu eslogan o frase corta aqui."
+      
     },
     "navigation": {
       "items": [
@@ -89,9 +89,9 @@
     },
     "contact": {
       "hours": "Lun-Vie 9:00 - 18:00",
-      "address": "Ciudad, Pais",
+      "address": "Metepec, México",
       "phone": "+1 555 123 4567",
-      "phoneHref": "tel:+15551234567"
+      "phoneHref": "tel:+52551234567"
     },
     "sections": {
       "services": {
@@ -211,19 +211,26 @@
     },
     "footer": {
       "contactLabel": "Contacto",
-      "socialLabel": "Social",
+      "socialLabel": "Síguenos",
+      "linksLabel": "Enlaces",
+      "legalName": "nom de la empr",
+      "rightsText": "Todos los derechos reservados.",
+      "creditPrefix": "Hecho por",
+      "creditName": "Brilint",
+      "creditHref": "https://brilint.com",
       "privacyLink": {
         "label": "Aviso de privacidad",
-        "href": "/privacidad.html"
+        "href": "privacidad.html"
       },
       "contactLinks": [
         { "label": "hola@tudominio.com", "href": "mailto:hola@tudominio.com" },
-        { "label": "+1 555 123 4567", "href": "tel:+15551234567" },
-        { "label": "WhatsApp", "href": "https://wa.me/15551234567" }
+        { "label": "+1 555 123 4567", "href": "tel:+15551234567" }
       ],
       "socialLinks": [
-        { "label": "Instagram", "href": "https://instagram.com/tu_usuario" },
-        { "label": "LinkedIn", "href": "https://linkedin.com/company/tu_empresa" }
+        { "network": "social-link icon-whatsapp", "href": "https://wa.me/15551234567", "label": "WhatsApp" },
+        { "network": "social-link icon-instagram", "href": "https://instagram.com", "label": "Instagram" },
+        { "network": "social-link icon-facebook", "href": "https://facebook.com", "label": "Facebook" },
+        { "network": "social-link icon-tiktok", "href": "https://tiktok.com", "label": "TikTok" }
       ]
     }
   }

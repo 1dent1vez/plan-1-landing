@@ -1,101 +1,289 @@
+/*
+  sections.css
+  ------------------------------------------------------------------------------
+  Responsabilidad
+  - Layout y estilo específicos de secciones:
+    - Secciones genéricas (.section, .section-alt).
+    - Hero (texto, media, meta).
+    - Grids de métricas, servicios, proceso y testimonios.
+    - Bloques de ubicación y contacto.
+    - Sección CTA final.
+  - Mobile-first: Los estilos base son para móvil; se expanden con min-width.
+*/
+
+/* SECCIONES GENÉRICAS ------------------------------------------------------ */
+
 .section {
   position: relative;
+  /* Compensa la altura del header sticky para navegación por anclas */
   scroll-margin-top: calc(var(--nav-height) + var(--s-2));
 }
 
+/* Separador visual entre secciones consecutivas */
 .section + .section {
   border-top: var(--border-1) solid var(--color-border);
 }
 
+/* Variante de sección con superficie alternativa */
 .section-alt {
   background: var(--surface);
 }
 
+/* CABECERA DE SECCIÓN ------------------------------------------------------ */
+
+.section-header {
+  margin-bottom: var(--s-3); /* Mobile first: margen menor */
+  max-width: 48ch;           /* Mobile first: ancho lectura */
+  display: grid;
+  gap: var(--s-2);
+}
+
+/* HERO (Rediseño: Centered Impact) ----------------------------------------- */
+
 .hero {
   position: relative;
-  background: var(--hero-grad);
+  /* Fondo oscuro con patrón de grilla sutil */
+  background-color: var(--color-bg);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+  padding-top: var(--s-5);
+  padding-bottom: var(--s-6);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Luz ambiental central (Glow) */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-grid {
-  display: grid;
-  gap: var(--s-5);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: var(--s-5);
+  max-width: 1000px; /* Ancho contenido para lectura cómoda */
+  margin: 0 auto;
 }
 
+/* Columna de copy (texto principal) */
+
 .hero-copy {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado total */
   gap: var(--s-3);
-  max-width: var(--content-max);
+  max-width: 70ch;
+  margin: 0 auto;
 }
+
+/* Título con gradiente sutil */
+.hero-copy h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  background: linear-gradient(to bottom right, #fff 30%, var(--muted));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-text); /* Fallback */
+  margin-bottom: var(--s-1);
+}
+
+.hero-copy .lead {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: var(--muted);
+  max-width: 50ch;
+  margin-bottom: var(--s-1);
+}
+
+/* Botones y acciones */
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--s-2);
-  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: var(--s-1);
 }
+
+.hero-actions .btn {
+  width: 100%;
+  height: 54px; /* Botones más altos para impacto */
+  font-size: 1rem;
+}
+
+/* Meta info (Adaptada al centro) */
 
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-2);
+  justify-content: center;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+  padding-top: var(--s-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
   color: var(--muted);
   font-size: var(--fs-small);
-  padding-top: var(--s-2);
-  border-top: var(--border-1) solid var(--color-border);
 }
 
+.hero-meta .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Bullets (Adaptados a fila centrada) */
+
 .hero-bullets {
-  display: grid;
-  gap: var(--s-1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-3);
+  list-style: none;
+  padding: 0;
   margin: 0;
-  padding-left: 1.25rem;
   color: var(--muted);
 }
 
 .hero-bullets li {
-  max-width: var(--content-narrow);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  max-width: none;
 }
 
+.hero-bullets li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Contenedor de media: Estilo Ventana/Dashboard */
+
 .hero-media {
+  width: 100%;
   position: relative;
-  border-radius: var(--r-3);
+  margin-top: var(--s-4);
+  
+  /* Marco de ventana */
   background: var(--surface);
-  border: var(--border-1) solid var(--color-border-strong);
-  padding: var(--s-2);
-  min-height: clamp(220px, 40vw, 420px);
-  aspect-ratio: 4 / 3;
+  border-radius: var(--r-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  
+  /* Sombra profunda */
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Barra superior simulada (Browser/App bar) */
+.hero-media::before {
+  content: '';
+  display: block;
+  height: 24px;
+  background: var(--surface-2);
+  border-radius: calc(var(--r-2) - 4px) calc(var(--r-2) - 4px) 0 0;
+  margin-bottom: 4px;
+  /* Simulación de botones de ventana (semáforo) */
+  box-shadow: 
+    14px 0 0 -2px #ff5f57, 
+    34px 0 0 -2px #febc2e, 
+    54px 0 0 -2px #28c840;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  top: 7px;
+  left: 12px;
 }
 
 .hero-image {
-  width: 100%;
-  height: 100%;
   display: block;
-  object-fit: cover;
-  border-radius: calc(var(--r-3) - 6px);
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 calc(var(--r-2) - 4px) calc(var(--r-2) - 4px);
   background: var(--surface-2);
+  aspect-ratio: 16/9; /* Formato panorámico */
+  object-fit: cover;
 }
 
-.section-header {
-  margin-bottom: var(--s-4);
-  max-width: var(--content-narrow);
-  display: grid;
-  gap: var(--s-2);
+/* MEDIA QUERIES (Desktop) */
+
+@media (min-width: 768px) {
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+  }
+  
+  .hero-actions .btn {
+    width: auto;
+    min-width: 160px;
+  }
 }
+
+@media (min-width: 1024px) {
+  /* En desktop hacemos la imagen protagonista */
+  .hero {
+    padding-top: var(--s-6);
+  }
+  
+  .hero-media {
+    max-width: 90%;
+    margin-top: var(--s-5);
+    /* Efecto 3D sutil al pasar el mouse */
+    transition: transform 0.5s ease;
+  }
+  
+  .hero-media:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* GRIDS DE MÉTRICAS / CARDS / PROCESO ------------------------------------- */
 
 .metrics-grid,
 .cards-grid,
 .process-grid {
   display: grid;
-  gap: var(--s-3);
+  gap: var(--s-2); /* Mobile first: gap ajustado */
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+
+/* Tarjeta de métrica */
 
 .metric-card {
   text-align: left;
   display: grid;
   gap: var(--s-1);
   border-left: 3px solid var(--color-primary);
+  padding-left: var(--s-2);
 }
 
 .metric-value {
@@ -108,16 +296,23 @@
   color: var(--muted);
 }
 
+/* Texto de servicios, proceso y testimonios */
+
 .service-card p,
 .process-card p,
 .testimonial-card p {
   color: var(--muted);
 }
 
+/* Tarjeta de paso del proceso */
+/* NOTA: En mobile usamos un layout específico (side-by-side) */
+
 .process-card {
   display: grid;
   gap: var(--s-2);
 }
+
+/* Tarjetas genéricas */
 
 .service-card,
 .testimonial-card {
@@ -133,6 +328,8 @@
   margin-top: var(--s-3);
 }
 
+/* UBICACIÓN / CONTACTO ----------------------------------------------------- */
+
 .location-grid {
   display: grid;
   gap: var(--s-3);
@@ -146,6 +343,8 @@
 .location-text {
   color: var(--muted);
 }
+
+/* Tarjeta de contacto principal */
 
 .contact-card {
   padding: var(--s-4);
@@ -168,6 +367,12 @@
   display: grid;
 }
 
+.contact-actions .btn {
+  width: 100%; /* Mobile first */
+}
+
+/* Índice circular para pasos del proceso */
+
 .step-index {
   display: inline-flex;
   align-items: center;
@@ -180,6 +385,8 @@
   font-weight: 700;
   margin-bottom: var(--s-2);
 }
+
+/* TESTIMONIOS -------------------------------------------------------------- */
 
 .testimonial-quote {
   font-size: var(--fs-body);
@@ -201,17 +408,23 @@
   color: var(--muted);
 }
 
+/* Acordeón */
+
 .accordion {
   display: grid;
   gap: var(--s-2);
 }
 
+/* CTA FINAL ---------------------------------------------------------------- */
+
 .cta {
   background: var(--surface-2);
 }
 
+/* Tarjeta CTA principal */
+
 .cta-card {
-  padding: var(--s-5);
+  padding: var(--s-4); /* Mobile first */
   border-radius: var(--r-3);
   display: grid;
   gap: var(--s-3);
@@ -222,7 +435,7 @@
 }
 
 .cta-card .btn {
-  width: 100%;
+  width: 100%; /* Mobile first: full width */
 }
 
 .cta-card p {
@@ -233,42 +446,14 @@
   max-width: var(--content-narrow);
 }
 
+
+/* RESPONSIVE & OVERRIDES --------------------------------------------------- */
+
+/* Mobile específico: Ajuste de layout de Cards de Proceso 
+   Para mejorar lectura en pantallas estrechas, cambiamos a modo lista (icono izq, texto der).
+*/
 @media (max-width: 767px) {
-  .hero-grid {
-    gap: var(--s-4);
-  }
-
-  .hero-copy {
-    gap: var(--s-2);
-    max-width: 52ch;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-  }
-
-  .section-header {
-    margin-bottom: var(--s-3);
-    max-width: 48ch;
-  }
-
-  .metrics-grid,
-  .cards-grid,
-  .process-grid {
-    gap: var(--s-2);
-  }
-
-  .metric-card {
-    padding-left: var(--s-2);
-  }
-
   .process-card {
-    display: grid;
     grid-template-columns: auto 1fr;
     column-gap: var(--s-2);
     row-gap: var(--s-1);
@@ -284,33 +469,56 @@
   .process-card p {
     grid-column: 2;
   }
-
-  .cta-card {
-    padding: var(--s-4);
-  }
-
-  .contact-card .btn {
-    width: 100%;
-  }
 }
+
+/* Tablet y superior (min-width: 768px) */
 
 @media (min-width: 768px) {
   .hero-actions {
+    flex-direction: row;
     align-items: center;
+  }
+  
+  .hero-actions .btn {
+    width: auto;
+  }
+  
+  .contact-actions .btn {
+    width: auto;
   }
 
   .hero-meta {
     column-gap: var(--s-3);
   }
+
+  .section-header {
+    margin-bottom: var(--s-4);
+    max-width: var(--content-narrow);
+  }
+
+  .metrics-grid,
+  .cards-grid,
+  .process-grid {
+    gap: var(--s-3);
+  }
+
+  .metric-card {
+    padding-left: 0; /* Reset del padding extra de mobile */
+  }
 }
+
+/* Desktop (min-width: 1024px) */
 
 @media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--s-5);
   }
 
   .hero-copy {
+    gap: var(--s-3);
     grid-column: 1 / span 6;
+    max-width: var(--content-max);
   }
 
   .hero-visual {
@@ -318,6 +526,7 @@
   }
 
   .cta-card {
+    padding: var(--s-5);
     grid-template-columns: 1fr auto;
   }
 
@@ -330,18 +539,15 @@
   }
 }
 
+/* Pantallas grandes (min-width: 1280px) */
+
 @media (min-width: 1280px) {
   .hero-grid {
     gap: var(--s-6);
   }
 
-  .hero-copy,
   .section-header,
   .cta-copy {
     max-width: var(--content-max);
   }
 }
-
-
-
-

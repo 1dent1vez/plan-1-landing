@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!--
+      index.html
+      ----------------------------------------------------------------------------
+      Responsabilidad
+      - Maquetado semántico de la landing.
+      - Define hooks de datos con data-bind / data-bind-attr / data-repeat que
+        son resueltos por config-loader.js a partir de config/config.json.
+      - Estructura mobile-first lista para estilos en tokens/base/components/sections.
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Título y descripción se alimentan desde content.meta.* -->
     <title data-bind="meta.title"></title>
-    <meta name="description" data-bind-attr="content:meta.description" content="" />
+    <meta
+      name="description"
+      data-bind-attr="content:meta.description"
+      content=""
+    />
+
+    <!-- Carga optimizada de fuentes (preconnect + Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- CSS por capas:
+         - tokens: design tokens (colores, escala tipográfica, spacing)
+         - base: reset, tipografía global, contenedores
+         - components: header, nav, botones, tarjetas, acordeón, footer
+         - sections: hero, servicios, beneficios, proceso, etc.
+    -->
     <link rel="stylesheet" href="src/styles/tokens.css" />
     <link rel="stylesheet" href="src/styles/base.css" />
     <link rel="stylesheet" href="src/styles/components.css" />
@@ -18,19 +42,47 @@
   </head>
 
   <body>
+    <!--
+      Enlace "skip to content" para accesibilidad (lectores de pantalla / teclado).
+      Se muestra al recibir foco (ver .skip-link en components.css).
+    -->
     <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!--
+      HEADER
+      - Navegación principal sticky.
+      - data-nav + data-nav-toggle: controlado por components.js (setupNavToggle).
+      - data-repeat="navigation.items": estructura de navegación dinámica desde config.
+    -->
     <header id="header" class="site-header">
       <div class="container header-inner">
+        <!-- Marca: logo textual + nombre de la marca -->
         <a class="brand" href="#hero">
-          <span class="brand-mark" aria-hidden="true" data-bind="brand.logoText"></span>
+          <span
+            class="brand-mark"
+            aria-hidden="true"
+            data-bind="brand.logoText"
+          ></span>
           <span class="brand-name" data-bind="brand.name"></span>
         </a>
 
-        <nav class="nav" id="site-nav" data-nav aria-label="Principal" data-repeat="navigation.items">
+        <!--
+          Navegación principal.
+          - data-nav: hook para toggle JS.
+          - data-repeat="navigation.items": cada item define { label, href }.
+        -->
+        <nav
+          class="nav"
+          id="site-nav"
+          data-nav
+          aria-label="Principal"
+          data-repeat="navigation.items"
+        >
           <a data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
         </nav>
 
-        <button
+        <!-- Botón de menú (mobile) controlado por setupNavToggle() -->
+        <!--<button
           class="nav-toggle"
           type="button"
           data-nav-toggle
@@ -40,13 +92,29 @@
         >
           <span></span>
           <span></span>
-        </button>
+        </button>-->
 
-        <a class="btn btn-primary btn-small" data-bind="whatsapp.buttonLabel" data-whatsapp-link></a>
+        <!-- CTA persistente de WhatsApp en el header -->
+        <!-- <a
+          class="btn btn-primary btn-small"
+          data-bind="whatsapp.buttonLabel"
+          data-whatsapp-link
+        ></a>-->
+        <a
+          class="btn btn-primary btn-small cta-sticky"
+          data-bind="whatsapp.buttonLabel"
+          data-whatsapp-link
+        ></a>
       </div>
     </header>
 
     <main id="main">
+      <!--
+        HERO
+        - data-section="hero": control de visibilidad vía content.sections.hero.enabled.
+        - hero.bullets: lista de bullets dinámica.
+        - hero.media.*: configuración de la imagen principal.
+      -->
       <section id="hero" class="section hero" data-section="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
@@ -54,20 +122,28 @@
             <h1 data-bind="hero.headline"></h1>
             <p class="lead" data-bind="hero.subheadline"></p>
 
+            <!-- Bullets de valor del hero -->
             <ul class="hero-bullets" data-repeat="hero.bullets">
               <li data-repeat-item data-bind="text"></li>
             </ul>
 
+            <!-- Acciones principales del hero (CTA a WhatsApp) -->
             <div class="hero-actions">
-              <a class="btn btn-primary" data-bind="hero.primaryCtaLabel" data-whatsapp-link></a>
+              <a
+                class="btn btn-primary"
+                data-bind="hero.primaryCtaLabel"
+                data-whatsapp-link
+              ></a>
             </div>
 
+            <!-- Metadatos operativos (horario, dirección) -->
             <div class="hero-meta">
               <span class="meta-item" data-bind="contact.hours"></span>
               <span class="meta-item" data-bind="contact.address"></span>
             </div>
           </div>
 
+          <!-- Media del hero: imagen configurable vía content.hero.media.* -->
           <div class="hero-visual hero-media">
             <img
               class="hero-image"
@@ -77,7 +153,16 @@
         </div>
       </section>
 
-      <section id="servicios" class="section section-alt" data-section="services">
+      <!--
+        SERVICIOS
+        - sections.services.items: tarjetas de servicio.
+        - sections.services.whatsappCtaLabel: CTA secundaria a WhatsApp.
+      -->
+      <section
+        id="servicios"
+        class="section section-alt"
+        data-section="services"
+      >
         <div class="container section-header">
           <h2 data-bind="sections.services.title"></h2>
         </div>
@@ -90,10 +175,18 @@
         </div>
 
         <div class="container services-cta">
-          <a class="text-link" data-bind="sections.services.whatsappCtaLabel" data-whatsapp-link></a>
+          <a
+            class="text-link"
+            data-bind="sections.services.whatsappCtaLabel"
+            data-whatsapp-link
+          ></a>
         </div>
       </section>
 
+      <!--
+        BENEFICIOS
+        - sections.benefits.items: listado de beneficios.
+      -->
       <section id="beneficios" class="section" data-section="benefits">
         <div class="container section-header">
           <h2 data-bind="sections.benefits.title"></h2>
@@ -107,12 +200,19 @@
         </div>
       </section>
 
+      <!--
+        RESULTADOS / PROOF
+        - sections.proof.metrics: métricas cuantitativas (value + label).
+      -->
       <section id="resultados" class="section" data-section="proof">
         <div class="container section-header">
           <h2 data-bind="sections.proof.title"></h2>
         </div>
 
-        <div class="container metrics-grid" data-repeat="sections.proof.metrics">
+        <div
+          class="container metrics-grid"
+          data-repeat="sections.proof.metrics"
+        >
           <article class="card metric-card" data-repeat-item>
             <p class="metric-value" data-bind="value"></p>
             <p class="metric-label" data-bind="label"></p>
@@ -120,12 +220,19 @@
         </div>
       </section>
 
+      <!--
+        PROCESO
+        - sections.process.steps: pasos del método (step, title, text).
+      -->
       <section id="proceso" class="section section-alt" data-section="process">
         <div class="container section-header">
           <h2 data-bind="sections.process.title"></h2>
         </div>
 
-        <div class="container process-grid" data-repeat="sections.process.steps">
+        <div
+          class="container process-grid"
+          data-repeat="sections.process.steps"
+        >
           <article class="card process-card" data-repeat-item>
             <span class="step-index" data-bind="step"></span>
             <h3 data-bind="title"></h3>
@@ -134,12 +241,19 @@
         </div>
       </section>
 
+      <!--
+        TESTIMONIOS
+        - sections.testimonials.items: { quote, name, role }.
+      -->
       <section id="testimonios" class="section" data-section="testimonials">
         <div class="container section-header">
           <h2 data-bind="sections.testimonials.title"></h2>
         </div>
 
-        <div class="container cards-grid" data-repeat="sections.testimonials.items">
+        <div
+          class="container cards-grid"
+          data-repeat="sections.testimonials.items"
+        >
           <article class="card testimonial-card" data-repeat-item>
             <p class="testimonial-quote" data-bind="quote"></p>
             <p class="testimonial-name" data-bind="name"></p>
@@ -148,7 +262,16 @@
         </div>
       </section>
 
-      <section id="ubicacion" class="section section-alt" data-section="location">
+      <!--
+        UBICACIÓN
+        - sections.location.title / actionLabel
+        - contact.address / contact.hours reutilizados.
+      -->
+      <section
+        id="ubicacion"
+        class="section section-alt"
+        data-section="location"
+      >
         <div class="container section-header">
           <h2 data-bind="sections.location.title"></h2>
         </div>
@@ -157,20 +280,38 @@
           <div class="card location-card">
             <p class="location-text" data-bind="contact.address"></p>
             <p class="location-text" data-bind="contact.hours"></p>
-            <a class="text-link" data-bind="sections.location.actionLabel" data-whatsapp-link></a>
+            <a
+              class="text-link"
+              data-bind="sections.location.actionLabel"
+              data-whatsapp-link
+            ></a>
           </div>
         </div>
       </section>
 
+      <!--
+        FAQ (acordeón)
+        - data-accordion + .accordion-item: controlados por setupAccordion().
+        - sections.faq.items: { question, answer }.
+      -->
       <section id="faq" class="section" data-section="faq">
         <div class="container section-header">
           <h2 data-bind="sections.faq.title"></h2>
         </div>
 
         <div class="container">
-          <div class="accordion" data-accordion data-repeat="sections.faq.items">
+          <div
+            class="accordion"
+            data-accordion
+            data-repeat="sections.faq.items"
+          >
             <div class="accordion-item" data-repeat-item>
-              <button class="accordion-trigger" type="button" data-bind="question" aria-expanded="false"></button>
+              <button
+                class="accordion-trigger"
+                type="button"
+                data-bind="question"
+                aria-expanded="false"
+              ></button>
               <div class="accordion-panel">
                 <p data-bind="answer"></p>
               </div>
@@ -179,19 +320,36 @@
         </div>
       </section>
 
+      <!--
+        CONTACTO
+        - sections.contact.*: títulos + CTA.
+        - contact.phone / contact.phoneHref: link directo a llamada.
+      -->
       <section id="contacto" class="section" data-section="contact">
         <div class="container contact-card">
           <div class="contact-copy">
             <h2 data-bind="sections.contact.title"></h2>
             <p data-bind="sections.contact.subtitle"></p>
-            <a class="text-link" data-bind="contact.phone" data-bind-attr="href:contact.phoneHref"></a>
+            <a
+              class="text-link"
+              data-bind="contact.phone"
+              data-bind-attr="href:contact.phoneHref"
+            ></a>
           </div>
           <div class="contact-actions">
-            <a class="btn btn-primary btn-large" data-bind="sections.contact.buttonLabel" data-whatsapp-link></a>
+            <a
+              class="btn btn-primary btn-large"
+              data-bind="sections.contact.buttonLabel"
+              data-whatsapp-link
+            ></a>
           </div>
         </div>
       </section>
 
+      <!--
+        CTA FINAL
+        - sections.cta.*: título, subtítulo y botón con href configurable.
+      -->
       <section id="cta" class="section cta" data-section="cta">
         <div class="container">
           <div class="cta-card">
@@ -199,45 +357,99 @@
               <h2 data-bind="sections.cta.title"></h2>
               <p data-bind="sections.cta.subtitle"></p>
             </div>
-            <a class="btn btn-primary btn-large" data-bind="sections.cta.buttonLabel" data-bind-attr="href:sections.cta.buttonHref"></a>
+            <a
+              class="btn btn-primary btn-large"
+              data-bind="sections.cta.buttonLabel"
+              data-bind-attr="href:sections.cta.buttonHref"
+            ></a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer id="footer" class="section footer" data-section="footer">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <p class="footer-title" data-bind="brand.name"></p>
-          <p class="footer-tagline" data-bind="brand.tagline"></p>
-          <p class="footer-legal">
-            <span data-bind="brand.name"></span>
-            <span aria-hidden="true">-</span>
+    <!--
+      FOOTER
+      - Reutiliza brand.* y define bloques dinámicos en footer.*:
+        - privacyLink: { label, href }
+        - contactLinks: array de { label, href }
+        - socialLinks: array de { label, href }
+      - [data-year]: año actual inyectado por setCurrentYear().
+    -->
+  <footer id="footer" class="section footer" data-section="footer">
+      <div class="container">
+        
+        <!-- Parte Superior: Grid de Enlaces (Contacto y Redes Sociales) -->
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="footer-title" data-bind="brand.name"></p>
+            <p class="footer-tagline" data-bind="brand.tagline"></p>
+            <a
+              class="footer-link"
+              data-bind="footer.privacyLink.label"
+              data-bind-attr="href:footer.privacyLink.href"
+            ></a>
+          </div>
+
+          <!-- Contacto -->
+          <div>
+            <p class="footer-label" data-bind="footer.contactLabel"></p>
+            <div class="footer-links" data-repeat="footer.contactLinks">
+              <a
+                class="footer-link"
+                data-repeat-item
+                data-bind="label"
+                data-bind-attr="href:href"
+              ></a>
+            </div>
+          </div>
+
+          <!-- Redes Sociales (Iconos) -->
+          <div>
+            <p class="footer-label" data-bind="footer.socialLabel"></p>
+            <!-- Usamos data-bind-attr para la clase 'network' que contiene los iconos -->
+            <div class="social-list" data-repeat="footer.socialLinks">
+              <a
+                class=""
+                data-repeat-item
+                data-bind-attr="href:href; aria-label:label; class:network"
+                target="_blank"
+                rel="noopener"
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parte Inferior: Creative Terminal Style -->
+        <div class="footer-bottom">
+          <div class="footer-line-wrapper">
+            <span>©</span>
             <span data-year></span>
-          </p>
-          <a
-            class="footer-link"
-            data-bind="footer.privacyLink.label"
-            data-bind-attr="href:footer.privacyLink.href"
-          ></a>
-        </div>
-
-        <div>
-          <p class="footer-label" data-bind="footer.contactLabel"></p>
-          <div class="footer-links" data-repeat="footer.contactLinks">
-            <a class="footer-link" data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
+            <span data-bind="footer.legalName"></span>
+            <span class="separator" aria-hidden="true">|</span>
+            <span data-bind="footer.rightsText"></span>
+            <span class="separator" aria-hidden="true">|</span>
+            <span data-bind="footer.creditPrefix"></span>
+            <a 
+              class="credit-link" 
+              data-bind="footer.creditName" 
+              data-bind-attr="href:footer.creditHref"
+              target="_blank" 
+              rel="noopener"
+            ></a>
           </div>
         </div>
 
-        <div>
-          <p class="footer-label" data-bind="footer.socialLabel"></p>
-          <div class="footer-links" data-repeat="footer.socialLinks">
-            <a class="footer-link" data-repeat-item data-bind="label" data-bind-attr="href:href"></a>
-          </div>
-        </div>
       </div>
     </footer>
 
+    <!--
+      JS principal (ES module)
+      - main.js:
+        - initConfig(): carga y aplica config + tema.
+        - initComponents(): nav + acordeones.
+        - applyWhatsAppLinks(): data-whatsapp-link → wa.me.
+        - setCurrentYear(): inyecta año en [data-year].
+    -->
     <script type="module" src="src/js/main.js"></script>
   </body>
 </html>
